@@ -1,5 +1,5 @@
 import kinesiologie from "../../../public/images/cells/kinesiologie.svg";
-import arrow_right from "../../../public/images/svg/arrow-right.svg";
+import arrow_right from "../../../public/images/svg/arrowRight.svg";
 import ayurveda from "../../../public/images/cells/ayurveda.svg";
 import lithotherapie from "../../../public/images/cells/lithotherapie.svg";
 import Link from "next/link";

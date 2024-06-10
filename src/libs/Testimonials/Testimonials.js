@@ -1,4 +1,4 @@
-import arrow_right from "../../../public/images/svg/arrow-right.svg";
+import arrow_right from "../../../public/images/svg/arrowRight.svg";
 import Link from "next/link";
 import Image from "next/image";
 

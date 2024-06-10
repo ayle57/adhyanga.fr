@@ -1,4 +1,4 @@
-import hero_removed from "../../../public/images/heroRemoved.svg";
+import heroRemoved from "../../../public/images/heroRemoved.svg";
 import Link from "next/link"
 import Image from "next/image"
 
@@ -16,7 +16,7 @@ export default function Landing() {
                     </div>
                 </div>
                 <div className="image-container">
-                    <Image src={hero_removed}
+                    <Image src={heroRemoved}
                          alt="Adeline Pierrot, praticienne en lithothérapie, ayurvéda et kinésiologie"/>
                 </div>
             </div>
