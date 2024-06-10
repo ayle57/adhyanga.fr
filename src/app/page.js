@@ -7,6 +7,9 @@ import Pricing from '@/libs/Pricing/Pricing';
 import Cabinet from '@/libs/Cabinet/Cabinet';
 import Testimonials from "@/libs/Testimonials/Testimonials";
 import About from '@/libs/About/About'
+import Cheque from "@/libs/Cheque/Cheque";
+import Contact from "@/libs/Contact/Contact";
+import Footer from "@/libs/Footer/Footer";
 
 export default function Home() {
     return (
@@ -24,6 +27,9 @@ export default function Home() {
             <Cabinet/>
             <Testimonials/>
             <About/>
+            <Cheque/>
+            <Contact/>
+            <Footer/>
         </main>
     );
 }
