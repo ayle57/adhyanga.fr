@@ -1,0 +1,12 @@
+a.badge {
+  font: {
+    size: 16px;
+    weight: 600;
+  };
+  cursor: pointer;
+  color: $medium_blue;
+  background: darken($medium_green, 10);
+  padding: 10px 15px;
+  border-radius: 30px;
+
+}

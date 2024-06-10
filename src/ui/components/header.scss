@@ -1,0 +1,25 @@
+
+div.__header {
+  flex: 0 0 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  span {
+    font-size: 17px;
+    font-weight: 500;
+    color: $light_white;
+    letter-spacing: .2px;
+    line-height: 1.5;
+  }
+  h2 {
+    font: {
+      size: 50px;
+      family: $font_family_headings;
+      weight: 300;
+    };
+    margin: 0 auto;
+    max-width: 70%;
+  }
+}

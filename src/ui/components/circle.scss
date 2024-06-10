@@ -1,0 +1,41 @@
+
+.circle {
+  margin: 0 auto;
+  width: 170px;
+  height: 172px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  &.little {
+    margin: 0;
+    width: 60px;
+    height: 60px;
+  }
+  &.green {
+    background:darken($medium_green, 10);
+    margin-bottom: 20px;
+    transition: .2s;
+    &:hover {
+      background: darken($medium_green, 15);
+    }
+  }
+  h4 {
+    font: {
+      size: 40px;
+      weight: 400;
+      family: $font_family_headings;
+    }
+    color: $medium_white;
+  }
+  span {
+    padding-top: 10px;
+    font: {
+      size: 20px;
+      weight: 400;
+      family: $font_family_headings;
+    }
+    color: $medium_white;
+  }
+}
