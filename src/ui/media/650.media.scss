@@ -1,0 +1,80 @@
+@media screen and (max-width: 650px) {
+  nav.navbar {
+    display: none;
+  }
+
+  section.section.landing div.landing-inner div.content-container {
+    div.btn-container {
+      text-align: center;
+    }
+    h1 {
+      font-size: 30px;
+    }
+  }
+
+  section.section.cheque div.cheque-inner img {
+    display: none;
+  }
+
+  section.section.about div.about-inner div.__body {
+    flex-direction: column;
+
+    div.left, div.right {
+      flex: 0 0 100%;
+      max-width: 100%;
+      font-size: 14px;
+
+      img {
+        width: 80px !important;
+      }
+    }
+  }
+
+  section.section.contact div.contact-inner div.contact-container form {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .__header {
+    h2 {
+      font-size: 30px !important;
+    }
+  }
+
+  section.section.landing div.landing-inner div.content-container div.btn-container {
+    flex-direction: column;
+    gap: 10px 0;
+  }
+  section.section.cheque div.cheque-inner {
+    height: auto;
+
+    img.circle-item {
+      display: none;
+    }
+  }
+
+  div.__header {
+    h2 {
+      font-size: 25px;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  section.section.about div.about-inner div.__body {
+    flex-direction: column;
+
+    div.left, div.right {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin: 5px 0;
+    }
+
+    img {
+      display: none;
+    }
+  }
+
+  section.section.testimonials div.testimonials-inner div.header a.circle.green.little {
+    display: none;
+  }
+}

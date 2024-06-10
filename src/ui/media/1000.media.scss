@@ -1,0 +1,118 @@
+@media screen and (max-width: 1000px) {
+  section.section.landing div.landing-inner div.content-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: relative;
+    padding: 0 4vw;
+  }
+  section.section.landing div.landing-inner div.image-container {
+    display: none;
+  }
+
+  section.section.services div.services-inner div.__body div.services-container {
+    flex-direction: column;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 5vw;
+    margin: 0 10%;
+
+    div.service-item {
+      flex: 0 0 100%;
+      min-width: 100%;
+      max-width: 100%;
+
+      &:nth-child(2) {
+        margin: 20px 0;
+      }
+
+      div.service-item-header {
+        display: none;
+      }
+    }
+  }
+
+  section.section.pricing div.pricing-inner div.__body {
+    p {
+      width: calc(100% - 40px);
+      margin: 20px;
+    }
+    div.pricing-container {
+      flex-direction: column;
+      padding: 0 5vw;
+
+      div.pricing-item {
+        &:nth-child(2) {
+          margin: 20px 0;
+        }
+
+        flex: 0 0 100%;
+        max-width: 100%;
+        min-width: 100%;
+      }
+    }
+  }
+
+  section.section.cabinet div.cabinet-inner div.__body div.cabinet-container {
+    flex-direction: column;
+
+    div.cabinet-item {
+      flex: 0 0 100%;
+      max-width: 100%;
+      min-width: 100%;
+
+      &:first-child {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  section.section.testimonials div.testimonials-inner div.testimonials-container {
+    flex-direction: column;
+
+    div.testimonial-item {
+      flex: 0 0 100%;
+      max-width: 100%;
+      min-width: 100%;
+
+      &:nth-child(2) {
+        margin: 20px 0;
+      }
+    }
+  }
+
+  section.section.about div.about-inner {
+    margin: 20px 10%;
+
+    div.__body {
+      flex: 0 0 100%;
+      max-width: 100%;
+      min-width: 100%;
+    }
+  }
+
+  section.section.contact div.contact-inner {
+    div.contact-container {
+      width: 100%;
+
+      div.col-6 {
+        flex-direction: column;
+
+        div.input, div.form-group {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+
+  section.section.cheque div.cheque-inner {
+    margin-bottom: 30px;
+
+    h2 {
+      font-size: 30px;
+    }
+  }
+
+  footer {
+    display: none;
+  }
+}
