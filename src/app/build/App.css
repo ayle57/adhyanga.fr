@@ -1,3 +1,892 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+*, ::before, ::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  scroll-behavior: smooth;
+}
 
+ul, li, ol {
+  list-style: none;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-family: "Montserrat";
+  text-transform: none;
+  text-decoration: none;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+div.main {
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #0A2640;
+}
+div.main div.circle {
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  top: 0;
+  right: 0;
+  z-index: 0;
+}
+div.main div.circle img {
+  width: 100%;
+  height: 100%;
+}
+
+*.section {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+nav.navbar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 70px 65px;
+  z-index: 100000;
+}
+nav.navbar ul.navlinks-container {
+  z-index: 100;
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+nav.navbar ul.navlinks-container li a {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  transition: 0.4s;
+}
+nav.navbar ul.navlinks-container li a:hover {
+  color: #f1f1f1;
+}
+
+section.landing div.landing-inner {
+  height: 70vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+section.landing div.landing-inner div.content-container {
+  flex: 0 0 60%;
+  max-width: 60%;
+  padding: 0 0 0 7vw;
+}
+section.landing div.landing-inner div.content-container h1 {
+  color: #FFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #000;
+  font-size: 3.536345776vw;
+  font-style: normal;
+  font-family: "Manrope";
+  font-weight: 400;
+  line-height: 1.5;
+}
+section.landing div.landing-inner div.content-container p {
+  color: #f1f1f1;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  margin-bottom: 15px;
+}
+section.landing div.landing-inner div.image-container {
+  z-index: 100;
+  height: 100%;
+  flex: 0 0 40%;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+}
+section.landing div.landing-inner div.image-container img {
+  max-width: 550px;
+  max-height: 580px;
+  width: 100%;
+  height: auto;
+}
+
+section.services div.services-inner {
+  padding: 5vh 0;
+}
+section.services div.services-inner div.__body div.services-container {
+  flex: 0 0 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10%;
+  gap: 0 10%;
+}
+section.services div.services-inner div.__body div.services-container div.service-item {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-header {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-header img {
+  width: 100%;
+  height: auto;
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-body {
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-top: 10px;
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-body h4 {
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-body p {
+  margin-top: 5px;
+  color: var(--Gray, #777);
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-footer a {
+  display: flex;
+  align-items: center;
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-footer a span.link-text {
+  color: #0A2640;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  position: relative;
+  overflow-x: hidden;
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-footer a span.link-text:hover:before {
+  transform: translateX(-100%);
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-footer a span.link-text::before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0A2640;
+  bottom: 0;
+  right: 0;
+  transition: 0.4s;
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-footer a span.link-image {
+  margin-left: 5px;
+}
+section.services div.services-inner div.__body div.services-container div.service-item div.service-item-footer a span.link-image img {
+  width: 24px;
+  height: 26px;
+}
+
+section.pricing div.pricing-inner {
+  margin: 10vh 10% 0;
+}
+section.pricing div.pricing-inner p {
+  font-size: 20px;
+  text-align: center;
+  margin: 5vh 10vh;
+  padding: 10px;
+  width: calc(100% - 20vh);
+  background: #1C3D5B;
+  color: #f1f1f1;
+  border-radius: 30px;
+}
+section.pricing div.pricing-inner div.__body div.pricing-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 0 50px;
+}
+section.pricing div.pricing-inner div.__body div.pricing-container div.pricing-item {
+  border-radius: 30px;
+  max-height: 684px;
+  height: 684px;
+  flex: 0 0 30%;
+  max-width: 30%;
+  background: #f1f1f1;
+}
+section.pricing div.pricing-inner div.__body div.pricing-container div.pricing-item div.princing-item-header {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: #1C3D5B;
+}
+section.pricing div.pricing-inner div.__body div.pricing-container div.pricing-item div.princing-item-header h5 {
+  color: #f1f1f1;
+  font-size: 26px;
+  font-weight: 400;
+}
+section.pricing div.pricing-inner div.__body div.pricing-container div.pricing-item div.pricing-item-body {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 0;
+}
+section.pricing div.pricing-inner div.__body div.pricing-container div.pricing-item div.pricing-item-body div.pricing-item-body-option h6 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 20px;
+}
+section.pricing div.pricing-inner div.__body div.pricing-container div.pricing-item div.pricing-item-footer {
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  height: 10%;
+  bottom: 0;
+  flex: 0 0 100%;
+  max-width: 100%;
+  background: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.pricing div.pricing-inner div.__body div.pricing-container div.pricing-item div.pricing-item-footer a.btn-phantom {
+  margin-bottom: 30px;
+  transition: 0.2s;
+}
+section.pricing div.pricing-inner div.__body div.pricing-container div.pricing-item div.pricing-item-footer a.btn-phantom:hover {
+  transform: scale(0.98);
+}
+
+section.section.cabinet div.cabinet-inner {
+  margin: 10vh 10%;
+}
+section.section.cabinet div.cabinet-inner div.cabinet-container {
+  flex: 0 0 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+section.section.cabinet div.cabinet-inner div.cabinet-container div.cabinet-item {
+  flex: 0 0 28%;
+  max-width: 28%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section.section.cabinet div.cabinet-inner div.cabinet-container div.cabinet-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+section.section.cabinet div.cabinet-inner div.cabinet-container div.cabinet-item h6 {
+  display: inline-block;
+  color: #1C3D5B;
+  position: relative;
+  font-size: 20px;
+  line-height: 2.5;
+  margin-top: 10px;
+}
+section.section.cabinet div.cabinet-inner div.cabinet-container div.cabinet-item h6::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #1C3D5B;
+  opacity: 0.8;
+  bottom: 0;
+  right: 0;
+}
+
+section.section.testimonials {
+  background: #0A2640;
+  padding: 80px 8%;
+}
+section.section.testimonials div.testimonials-inner div.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5vh;
+}
+section.section.testimonials div.testimonials-inner div.header h2 {
+  font-size: 40px;
+  font-family: "Manrope";
+  font-weight: 200;
+  color: #f1f1f1;
+}
+section.section.testimonials div.testimonials-inner div.header a i {
+  font-size: 25px;
+}
+section.section.testimonials div.testimonials-inner div.testimonials-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0 20px;
+}
+section.section.testimonials div.testimonials-inner div.testimonials-container div.testimonial-item {
+  padding: 20px 40px;
+  border-radius: 10px;
+  flex: 0 0 25%;
+  max-width: 25%;
+  background: #f1f1f1;
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+}
+section.section.testimonials div.testimonials-inner div.testimonials-container div.testimonial-item p {
+  color: #000000;
+  line-height: 2.5;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+section.section.testimonials div.testimonials-inner div.testimonials-container div.testimonial-item small {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+section.section.about div.about-inner {
+  margin: 5vh 10%;
+}
+section.section.about div.about-inner div.__body {
+  background: #0A2640;
+  padding: 40px;
+  border-radius: 30px;
+  color: #f1f1f1;
+  font-size: 18px;
+  line-height: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0 5%;
+}
+section.section.about div.about-inner div.__body .left {
+  flex: 0 0 45%;
+  max-width: 45%;
+}
+section.section.about div.about-inner div.__body .right {
+  flex: 0 0 45%;
+  max-width: 45%;
+}
+section.section.about div.about-inner div.__body .right .img-container {
+  text-align: center;
+}
+section.section.about div.about-inner div.__body .right .img-container img {
+  margin-top: 30px;
+  width: 150px;
+  height: auto;
+}
+section.section.about div.about-inner div.__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 0 20px;
+}
+section.section.about div.about-inner div.__footer a {
+  margin: 0;
+}
+
+section.section.cheque div.cheque-inner {
+  background-color: #0A2640;
+  position: relative;
+  margin: 0 10%;
+  height: 400px;
+  border-radius: 20px;
+  padding: 30px;
+}
+section.section.cheque div.cheque-inner img.circle-item {
+  border-top-right-radius: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 600px;
+  height: 240px;
+}
+section.section.cheque div.cheque-inner h2 {
+  text-align: center;
+  max-width: 70%;
+  margin: 5vh auto;
+  font-size: 60px;
+  position: relative;
+  color: #f1f1f1;
+  font-weight: 300;
+}
+section.section.cheque div.cheque-inner a.circle {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+}
+
+section.section.contact div.contact-inner {
+  flex: 0 0 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10vh 10%;
+}
+section.section.contact div.contact-inner .contact-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #f1f1f1;
+  padding: 30px;
+  border-radius: 30px;
+}
+section.section.contact div.contact-inner .contact-container form {
+  width: 80%;
+  margin: 20px auto;
+}
+section.section.contact div.contact-inner .contact-container form button {
+  margin-top: 30px;
+}
+section.section.contact div.contact-inner .contact-container form textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 20vh;
+  max-height: 80vh;
+  padding: 15px;
+  width: 100%;
+  height: 61px;
+  outline: none;
+  font-size: 16px;
+  font-family: "Montserrat";
+  border-radius: 10px;
+  border: 1px solid #bfbfbf;
+}
+section.section.contact div.contact-inner .contact-container form div.form-group label {
+  font-size: 15px;
+  color: #777777;
+  line-height: 2;
+}
+section.section.contact div.contact-inner .contact-container form div.form-group label span {
+  color: red;
+}
+section.section.contact div.contact-inner .contact-container form div.form-group div.input {
+  display: flex;
+  border: 1px solid #bfbfbf;
+  background: #ffffff;
+  border-radius: 10px;
+  align-items: center;
+}
+section.section.contact div.contact-inner .contact-container form div.form-group div.input label {
+  color: black;
+}
+section.section.contact div.contact-inner .contact-container form div.form-group div.input .icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-right: 1px solid #bfbfbf;
+  background: #f1f1f1;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+section.section.contact div.contact-inner .contact-container form div.form-group div.input .icon-container img {
+  width: 20px;
+  height: 20px;
+}
+section.section.contact div.contact-inner .contact-container form div.form-group div.input input {
+  padding-left: 15px;
+  border: none;
+  width: 100%;
+  height: 61px;
+  background: none;
+  outline: none;
+  font-size: 16px;
+  font-family: "Montserrat";
+}
+section.section.contact div.contact-inner .col-6 {
+  width: 100%;
+  display: flex;
+  gap: 0 20px;
+}
+section.section.contact div.contact-inner .col-6 div.form-group {
+  width: 50%;
+}
+section.section.contact div.contact-inner .col-6 div.form-group div.input {
+  width: 100%;
+}
+section.section.contact div.contact-inner .col-6 div.form-group div.input input {
+  width: 100%;
+}
+
+footer {
+  margin: 5vh 0;
+  text-align: right;
+}
+footer a {
+  margin-right: 10px;
+}
+
+.btn {
+  padding: 10px 42px;
+  gap: 8px;
+  border-radius: 24px;
+  background: #ffffff;
+  color: #0A2640 !important;
+  transition: 0.4s;
+}
+.btn:hover {
+  background: #69E6A6;
+}
+
+.btn-phantom {
+  display: inline-flex;
+  padding: 10px 36px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 56px;
+  border: 2px solid #FFF;
+  color: #FFF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+}
+.btn-phantom.reverse {
+  border: 2px solid #0A2640;
+  color: #0A2640;
+}
+.btn-phantom:hover {
+  background: none;
+}
+
+div.btn-container {
+  display: flex;
+  gap: 0 2vh;
+}
+
+.btn-primary {
+  display: block;
+  padding: 10px 36px;
+  gap: 8px;
+  border-radius: 56px;
+  border: 2px solid #69E6A6;
+  background: var(--Green, #65E4A3);
+  color: var(--Dark-Blue, #0A2640);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+  transition: 0.4s;
+}
+
+div.__header {
+  flex: 0 0 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+div.__header span {
+  font-size: 17px;
+  font-weight: 500;
+  color: #777777;
+  letter-spacing: 0.2px;
+  line-height: 1.5;
+}
+div.__header h2 {
+  font-size: 50px;
+  font-family: "Manrope";
+  font-weight: 300;
+  margin: 0 auto;
+  max-width: 70%;
+}
+
+*.__body, div.__body {
+  margin-top: 5vh;
+}
+
+.circle {
+  margin: 0 auto;
+  width: 170px;
+  height: 172px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.circle.little {
+  margin: 0;
+  width: 60px;
+  height: 60px;
+}
+.circle.green {
+  background: #3ddf8c;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+.circle.green:hover {
+  background: #27db7f;
+}
+.circle h4 {
+  font-size: 40px;
+  font-weight: 400;
+  font-family: "Manrope";
+  color: #f1f1f1;
+}
+.circle span {
+  padding-top: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Manrope";
+  color: #f1f1f1;
+}
+
+a.badge {
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #1C3D5B;
+  background: #3ddf8c;
+  padding: 10px 15px;
+  border-radius: 30px;
+}
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+}
+.container p {
+  font-size: 18px;
+  line-height: 2.5;
+}
+.container div.link-container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  line-height: 2;
+}
+.container div.link-container::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  right: 0;
+  bottom: 0;
+  background: #0A2640;
+}
+.container div.link-container a {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0A2640;
+}
+
+.section-container {
+  padding: 20px 20%;
+}
+.section-container h1 {
+  font-size: 30px;
+  color: #000000;
+}
+.section-container h4 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #0A2640;
+}
+.section-container p {
+  margin-bottom: 20px;
+}
+.section-container a {
+  display: inline-flex;
+}
+
+@media screen and (max-width: 1230px) {
+  nav.navbar ul.navlinks-container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  section.section.landing div.landing-inner div.content-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: relative;
+    padding: 0 4vw;
+  }
+  section.section.landing div.landing-inner div.image-container {
+    display: none;
+  }
+  section.section.services div.services-inner div.__body div.services-container {
+    flex-direction: column;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 5vw;
+    margin: 0 10%;
+  }
+  section.section.services div.services-inner div.__body div.services-container div.service-item {
+    flex: 0 0 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+  section.section.services div.services-inner div.__body div.services-container div.service-item:nth-child(2) {
+    margin: 20px 0;
+  }
+  section.section.services div.services-inner div.__body div.services-container div.service-item div.service-item-header {
+    display: none;
+  }
+  section.section.pricing div.pricing-inner div.__body p {
+    width: calc(100% - 40px);
+    margin: 20px;
+  }
+  section.section.pricing div.pricing-inner div.__body div.pricing-container {
+    flex-direction: column;
+    padding: 0 5vw;
+  }
+  section.section.pricing div.pricing-inner div.__body div.pricing-container div.pricing-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  section.section.pricing div.pricing-inner div.__body div.pricing-container div.pricing-item:nth-child(2) {
+    margin: 20px 0;
+  }
+  section.section.cabinet div.cabinet-inner div.__body div.cabinet-container {
+    flex-direction: column;
+  }
+  section.section.cabinet div.cabinet-inner div.__body div.cabinet-container div.cabinet-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  section.section.cabinet div.cabinet-inner div.__body div.cabinet-container div.cabinet-item:first-child {
+    margin-bottom: 20px;
+  }
+  section.section.testimonials div.testimonials-inner div.testimonials-container {
+    flex-direction: column;
+  }
+  section.section.testimonials div.testimonials-inner div.testimonials-container div.testimonial-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  section.section.testimonials div.testimonials-inner div.testimonials-container div.testimonial-item:nth-child(2) {
+    margin: 20px 0;
+  }
+  section.section.about div.about-inner {
+    margin: 20px 10%;
+  }
+  section.section.about div.about-inner div.__body {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  section.section.contact div.contact-inner div.contact-container {
+    width: 100%;
+  }
+  section.section.contact div.contact-inner div.contact-container div.col-6 {
+    flex-direction: column;
+  }
+  section.section.contact div.contact-inner div.contact-container div.col-6 div.input, section.section.contact div.contact-inner div.contact-container div.col-6 div.form-group {
+    width: 100% !important;
+  }
+  section.section.cheque div.cheque-inner {
+    margin-bottom: 30px;
+  }
+  section.section.cheque div.cheque-inner h2 {
+    font-size: 30px;
+  }
+  footer {
+    display: none;
+  }
+}
+@media screen and (max-width: 650px) {
+  nav.navbar {
+    display: none;
+  }
+  section.section.landing div.landing-inner div.content-container div.btn-container {
+    text-align: center;
+  }
+  section.section.landing div.landing-inner div.content-container h1 {
+    font-size: 30px;
+  }
+  section.section.cheque div.cheque-inner img {
+    display: none;
+  }
+  section.section.about div.about-inner div.__body {
+    flex-direction: column;
+  }
+  section.section.about div.about-inner div.__body div.left, section.section.about div.about-inner div.__body div.right {
+    flex: 0 0 100%;
+    max-width: 100%;
+    font-size: 14px;
+  }
+  section.section.about div.about-inner div.__body div.left img, section.section.about div.about-inner div.__body div.right img {
+    width: 80px !important;
+  }
+  section.section.contact div.contact-inner div.contact-container form {
+    margin: 10px 0;
+    width: 100%;
+  }
+  .__header h2 {
+    font-size: 30px !important;
+  }
+  section.section.landing div.landing-inner div.content-container div.btn-container {
+    flex-direction: column;
+    gap: 10px 0;
+  }
+  section.section.cheque div.cheque-inner {
+    height: auto;
+  }
+  section.section.cheque div.cheque-inner img.circle-item {
+    display: none;
+  }
+  div.__header h2 {
+    font-size: 25px;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  section.section.about div.about-inner div.__body {
+    flex-direction: column;
+  }
+  section.section.about div.about-inner div.__body div.left, section.section.about div.about-inner div.__body div.right {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 5px 0;
+  }
+  section.section.about div.about-inner div.__body img {
+    display: none;
+  }
+  section.section.testimonials div.testimonials-inner div.header a.circle.green.little {
+    display: none;
+  }
+}
+@media screen and (max-width: 365px) {
+  section.section.cheque {
+    display: none;
+  }
+}
 
 /*# sourceMappingURL=App.css.map */

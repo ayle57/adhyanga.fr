@@ -1,0 +1,36 @@
+
+// --- Config Files
+@import "config/import";
+@import "config/variables";
+@import "config/reset";
+
+// --- Containers Files
+@import "containers/main";
+@import "containers/section";
+
+// --- Layouts Files
+@import "layouts/navbar";
+@import "layouts/landing";
+@import "layouts/services";
+@import "layouts/pricing";
+@import "layouts/cabinet";
+@import "layouts/testimonials";
+@import "layouts/about";
+@import "layouts/cheque";
+@import "layouts/contact";
+@import "layouts/footer";
+
+// --- Components Files
+@import "components/btn";
+@import "components/header";
+@import "components/body";
+@import "components/circle";
+@import "components/badge";
+@import "components/explication";
+@import "components/errors/404";
+
+// --- Media CSS
+@import "media/1230.media";
+@import "media/1000.media";
+@import "media/650.media";
+@import "media/365.media";
