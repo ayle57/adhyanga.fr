@@ -1,0 +1,28 @@
+
+nav.navbar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 70px 65px;
+  z-index: 100000;
+  ul.navlinks-container {
+    z-index: 100;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    li {
+      a {
+        color: $dark_white;
+        font: {
+          size: 16px;
+          weight: 600;
+        }
+        line-height: 24px;
+        transition: $basic_duration;
+        &:hover {
+          color: $medium_white;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+
+section.section.about {
+  div.about-inner {
+    margin: 5vh 10%;
+    div.__body {
+      background: $dark_blue;
+      padding: 40px;
+      border-radius: 30px;
+      color: $medium_white;
+      font-size: 18px;
+      line-height: 2;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0 5%;
+      .left {
+        flex: 0 0 calc(50% - 5%);
+        max-width: calc(50% - 5%);
+      }
+      .right {
+        flex: 0 0 calc(50% - 5%);
+        max-width: calc(50% - 5%);
+        .img-container {
+          text-align: center;
+          img {
+            margin-top: 30px;
+            width: 150px;
+            height: auto;
+          }
+        }
+      }
+    }
+
+    div.__footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin: 20px 0;
+      gap: 0 20px;
+      a {
+        margin: 0;
+      }
+    }
+  }
+}

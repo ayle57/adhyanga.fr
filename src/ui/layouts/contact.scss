@@ -1,0 +1,113 @@
+
+section.section.contact {
+  div.contact-inner {
+
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10vh 10%;
+
+    .contact-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background: $medium_white;
+      padding: 30px;
+      border-radius: 30px;
+
+      form {
+        width: 80%;
+        margin: 20px auto;
+
+        button {
+          margin-top: 30px;
+        }
+
+        textarea {
+          max-width: 100%;
+          min-width: 100%;
+          min-height: 20vh;
+          max-height: 80vh;
+          padding: 15px;
+          width: 100%;
+          height: 61px;
+          outline: none;
+          font-size: 16px;
+          font-family: $font_family_text;
+          border-radius: 10px;
+          border: 1px solid #bfbfbf;
+        }
+
+        div.form-group {
+          label {
+            font-size: 15px;
+            color: $light_white;
+            line-height: 2;
+
+            span {
+              color: red;
+            }
+          }
+
+          div.input {
+            display: flex;
+            border: 1px solid #bfbfbf;
+            background: $dark_white;
+            border-radius: 10px;
+            align-items: center;
+
+            label {
+              color: black;
+            }
+
+            .icon-container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 20px;
+              border-right: 1px solid #bfbfbf;
+              background: $medium_white;
+              border-bottom-left-radius: 10px;
+              border-top-left-radius: 10px;
+              img {
+                width: 20px;
+                height: 20px;
+              }
+            }
+
+            input {
+              padding-left: 15px;
+              border: none;
+              width: 100%;
+              height: 61px;
+              background: none;
+              outline: none;
+              font-size: 16px;
+              font-family: $font_family_text;
+            }
+          }
+        }
+      }
+    }
+
+    .col-6 {
+      width: 100%;
+      display: flex;
+      gap: 0 20px;
+
+      div.form-group {
+        width: 50%;
+        div.input {
+          width: 100%;
+
+          input {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+  }
+}
