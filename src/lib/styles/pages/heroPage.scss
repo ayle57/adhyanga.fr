@@ -1,0 +1,40 @@
+main.heroPage {
+  height: 90vh;
+  position: relative;
+
+  &::before {
+    z-index: 0;
+    content: "";
+    display: block;
+    position: absolute;
+
+    width: 50%;
+    height: 50%;
+    min-width: 50%;
+    min-height: 50%;
+
+    background-image: url("/background.svg");
+    background-size: contain;
+    background-position: top right;
+    background-repeat: no-repeat;
+
+    top: 0;
+    right: 0;
+
+    @media (max-width: 768px) {
+      width: 70%;
+      height: 70%;
+    }
+
+    @media (max-width: 480px) {
+      width: 90%;
+      height: 90%;
+    }
+  }
+
+  .heroPage-inner {
+    z-index: -1;
+    background: $darkBlue;
+    height: 100%;
+  }
+}

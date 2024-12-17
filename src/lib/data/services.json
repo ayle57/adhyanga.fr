@@ -1,0 +1,60 @@
+{
+  "services": [
+    {
+      "category": "Kinésiologie",
+      "durations": [
+        {
+          "duration": "1h-1h30",
+          "prices": [
+            {
+              "type": "Adulte",
+              "price": 60
+            },
+            {
+              "type": "Enfant",
+              "price": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Ayurvéda",
+      "durations": [
+        {
+          "duration": "0h40",
+          "price": 40,
+          "options": [
+            "massage du dos",
+            "massage du ventre",
+            "shirotchampi"
+          ]
+        },
+        {
+          "duration": "1h",
+          "price": 60,
+          "options": ["abhyanga classique", "abhyanga dynamique"]
+        },
+        {
+          "duration": "1h30",
+          "price": 90,
+          "options": ["abhyanga classique", "abhyanga dynamique"]
+        },
+        {
+          "duration": "2h00",
+          "price": 120,
+          "options": ["abhyanga classique", "abhyange dynamique"]
+        }
+      ]
+    },
+    {
+      "category": "Lithothérapie",
+      "durations": [
+        {
+          "duration": "0h30-1h00",
+          "price": 60
+        }
+      ]
+    }
+  ]
+}

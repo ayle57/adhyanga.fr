@@ -1,0 +1,21 @@
+// --- --- Abstract Files
+// --- Config Files
+@import "abstracts/config/_fonts.abstract";
+@import "abstracts/config/_variables.abstract";
+@import "abstracts/config/_reset.abstract";
+@import "abstracts/config/_normalize.abstract";
+
+// --- --- Pages Files
+@import "pages/heroPage";
+
+// --- --- Layouts Files
+@import "layout/homeSection";
+@import "layout/servicesSection";
+@import "layout/tarifSection";
+@import "layout/cabinetSection";
+@import "layout/testimonialsSection";
+@import "layout/aboutSection";
+
+// --- --- Components Files
+@import "components/Navbar";
+@import "components/__header";

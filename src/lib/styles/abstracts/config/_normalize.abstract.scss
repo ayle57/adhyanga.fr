@@ -1,0 +1,47 @@
+@mixin title-styles($font-size) {
+  font-weight: 600;
+  line-height: 1.2;
+  color: $darkBlue;
+  font-size: $font-size;
+}
+
+h1 {
+  @include title-styles(2rem);
+}
+
+h2 {
+  @include title-styles(1.75rem);
+}
+
+h3 {
+  @include title-styles(1.5rem);
+}
+
+h4 {
+  @include title-styles(1.25rem);
+}
+
+h5 {
+  @include title-styles(1.125rem);
+}
+
+h6 {
+  @include title-styles(1rem);
+}
+
+p, %p {
+  margin-bottom: 1.25rem;
+  color: $gray;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+small {
+  @extend %p;
+  font-size: 0.75rem;
+}
+
+.section {
+  flex: 0 0 100%;
+  max-width: 100%;
+}

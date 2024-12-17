@@ -1,0 +1,98 @@
+section.tarifs {
+  margin-top: 10vh;
+}
+
+div.__body {
+  div.services-container {
+    margin: 5vh 10vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 2.5vw;
+    grid-row-gap: 5vw;
+
+    div.service-card {
+      height: 100%;
+
+      .service-header {
+        background-color: $darkBlue;
+        height: 5vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h2 {
+          color: $white;
+          font-weight: 300;
+          font-size: 1.65rem;
+        }
+      }
+
+      .service-body {
+        padding: 2.5vh 0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        .price-card {
+          margin-top: 2vh;
+          .duration-type {
+            margin-top: 1vh;
+            p {
+              margin-bottom: 10px;
+            }
+          }
+          &:first-of-type {
+            margin-top: 0;
+          }
+        }
+
+        .circle-green {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+
+          width: 8rem;
+          height: 8rem;
+          border-radius: 100%;
+          background-color: $green;
+
+          h3 {
+            padding-top: 25%;
+            color: $white;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.125rem;
+          }
+          p {
+            font-size: 15px;
+            color: darken($green, 40);
+          }
+        }
+
+        .service-options li {
+          line-height: 1.6;
+          img {
+            width: 14px;
+            height: auto;
+            fill: $green;
+          }
+        }
+      }
+
+      .service-footer {
+        text-align: center;
+        margin-top: 10px;
+
+        a.btn-primary {
+          display: block;
+          padding: 10px 20px;
+          border: 2px solid $darkBlue;
+          border-radius: 20px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

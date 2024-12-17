@@ -1,0 +1,62 @@
+section.section.servicesSection div.servicesSection-inner {
+  margin-top: 10vh;
+
+  .__body {
+    margin: 10vh 10vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 5vw;
+    grid-row-gap: 5vw;
+
+    article.service-item {
+      flex: 0 0 100%;
+      max-width: 100%;
+
+      &:hover p.link::before {
+        transform: translateX(0);
+      }
+
+      img {
+        width: 100%;
+      }
+
+      h4 {
+        font-weight: 500;
+        line-height: 2;
+      }
+
+      p {
+        font-size: 17px;
+      }
+
+      p.link {
+        color: $darkBlue;
+        overflow-x: hidden;
+        display: inline-flex;
+        align-items: center;
+        font-weight: 600;
+        position: relative;
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background: $darkBlue;
+          transform: translateX(-100%);
+          transition: transform 300ms;
+        }
+
+        img {
+          width: 20px;
+          height: auto;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
