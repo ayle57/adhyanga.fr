@@ -4,7 +4,7 @@
       "category": "Kinésiologie",
       "durations": [
         {
-          "duration": "1h-1h30",
+          "duration": "1h00-1h30",
           "prices": [
             {
               "type": "Adulte",
@@ -31,7 +31,7 @@
           ]
         },
         {
-          "duration": "1h",
+          "duration": "1h00",
           "price": 60,
           "options": ["abhyanga classique", "abhyanga dynamique"]
         },
@@ -43,7 +43,7 @@
         {
           "duration": "2h00",
           "price": 120,
-          "options": ["abhyanga classique", "abhyange dynamique"]
+          "options": ["abhyanga classique", "abhyanga dynamique"]
         }
       ]
     },

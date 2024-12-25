@@ -1,0 +1,41 @@
+.input-label {
+  margin-bottom: 0.25vh;
+}
+
+.input-field {
+  border: 1px solid $darkBlue;
+  padding: 10px 10px;
+  border-radius: 10px;
+  background: $white;
+  font-family: "Montserrat";
+  outline-color: $green;
+  color: $darkBlue;
+
+  &::placeholder {
+    color: lighten($darkBlue, 10%);
+  }
+}
+
+textarea.input-field {
+  height: 10vh;
+  min-height: 5vh;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 50vh;
+}
+
+input[type="checkbox"] {
+  margin: 20px 5px 20px 0;
+}
+
+button.btn-primary {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 2px solid $green;
+  background-color: $green;
+  color: $white;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+}

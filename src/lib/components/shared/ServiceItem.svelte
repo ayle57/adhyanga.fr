@@ -1,11 +1,23 @@
 <script>
     import {adaptArticle} from "$lib/utils/string.js";
 
-    const {id, title, image} = $props();
+    let {id, title, image} = $props();
     const description = `Apprenez en plus à propos de ${adaptArticle(title)}` + title.toLowerCase() + ".";
+    let link;
+    switch (title) {
+        case "Kinésiologie":
+            link = "kinesiologie";
+            break;
+        case "Lithothérapie":
+            link = "lithotherapie";
+            break;
+        case "Ayurvéda":
+            link = "ayurveda";
+            break;
+    }
 </script>
 
-<a href="">
+<a href="/{link}">
     <article class="service-item {id}">
         <img src={image} alt="Pictogramme sur la {title}"/>
         <h4>{title}</h4>

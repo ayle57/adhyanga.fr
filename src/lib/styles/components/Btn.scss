@@ -1,0 +1,39 @@
+.btn-container {
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+
+  &.container-full-width {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  .btn-primary {
+    font-size: 16px;
+    display: inline-block;
+    color: $darkBlue;
+    font-weight: 600;
+    background-color: $green;
+    border: 2px solid $green;
+    padding: 10px 30px;
+    border-radius: 30px;
+    transition: transform 400ms;
+
+    &.btn-secondary {
+      font-size: 16px;
+      display: inline-block;
+      color: $white;
+      font-weight: 600;
+      background-color: inherit;
+      border: 2px solid $white;
+      padding: 10px 30px;
+      border-radius: 30px;
+      transition: transform 400ms;
+    }
+
+    &:hover {
+      transform: scale(0.98);
+    }
+  }
+}

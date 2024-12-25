@@ -7,6 +7,7 @@
 
 // --- --- Pages Files
 @import "pages/heroPage";
+@import "pages/rdvPage";
 
 // --- --- Layouts Files
 @import "layout/homeSection";
@@ -15,7 +16,12 @@
 @import "layout/cabinetSection";
 @import "layout/testimonialsSection";
 @import "layout/aboutSection";
+@import "layout/chequeSection";
+@import "layout/contactSection";
 
 // --- --- Components Files
 @import "components/Navbar";
-@import "components/__header";
+@import "components/Header";
+@import "components/Input";
+@import "components/Btn";
+@import "components/Footer";

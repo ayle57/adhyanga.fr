@@ -1,5 +1,10 @@
 {
 	"/": [
 		"src/routes/+page.server.js"
-	]
+	],
+	"/ayurveda": [],
+	"/kinesiologie": [],
+	"/legals": [],
+	"/lithotherapie": [],
+	"/rdv": []
 }

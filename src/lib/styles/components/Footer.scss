@@ -1,0 +1,31 @@
+footer {
+  padding: 30px 2.5vw;
+  background: $darkBlue;
+  display: flex;
+  justify-content: space-around;
+
+  ul:nth-of-type(1) {
+    text-align: left;
+  }
+
+  ul:nth-of-type(2) {
+    text-align: center;
+  }
+  ul:nth-of-type(3) {
+    text-align: right;
+  }
+
+  li, a {
+    color: $white;
+    line-height: 2;
+    transition: color 400ms;
+  }
+
+  img {
+    width: 20px;
+    height: auto;
+  }
+  a:hover {
+    color: $green;
+  }
+}

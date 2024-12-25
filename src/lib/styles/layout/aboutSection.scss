@@ -7,7 +7,7 @@ section.section.aboutSection div.aboutSection-inner {
     margin-top: 5vh;
 
     div.content-container {
-      width: 70vw;
+      width: 80vw;
       background: $darkBlue;
       padding: 40px;
       border-radius: 20px;
@@ -17,6 +17,7 @@ section.section.aboutSection div.aboutSection-inner {
       div.left, div.right {
         flex: 0 0 calc(50% - 5vw);
         max-width: calc(50% - 5vw);
+
         p {
           color: $white;
           line-height: 2.5;
@@ -36,12 +37,11 @@ section.section.aboutSection div.aboutSection-inner {
     text-align: center;
     flex: 0 0 100%;
     max-width: 100%;
+    margin-top: 5vh;
 
     div.btn-container {
-      width: 100%;
       display: flex;
       justify-content: center;
-      gap: 0 10px;
       margin-top: 1.5vh;
 
       p a {
@@ -53,20 +53,16 @@ section.section.aboutSection div.aboutSection-inner {
         border-radius: 40px;
 
         &.btn-primary {
-          background: $green;
-          border: 2px solid $green;
-          padding: 0;
-          width: 50px;
-          height: 50px;
-
+          border: none;
+          width: 25px;
           display: flex;
           justify-content: center;
           align-items: center;
+        }
 
-          img {
-            width: 30px;
-            height: auto;
-          }
+        img {
+          width: 30px;
+          height: auto;
         }
       }
     }

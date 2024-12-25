@@ -1,3 +1,7 @@
+* {
+  scroll-behavior: smooth;
+}
+
 @mixin title-styles($font-size) {
   font-weight: 600;
   line-height: 1.2;
@@ -31,7 +35,6 @@ h6 {
 
 p, %p {
   margin-bottom: 1.25rem;
-  color: $gray;
   font-size: 1rem;
   line-height: 1.6;
 }
