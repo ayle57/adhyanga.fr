@@ -3,6 +3,7 @@
 		"src/routes/+page.server.js"
 	],
 	"/ayurveda": [],
+	"/cgc": [],
 	"/kinesiologie": [],
 	"/legals": [],
 	"/lithotherapie": [],

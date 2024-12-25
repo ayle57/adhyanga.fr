@@ -12,7 +12,7 @@
     </ul>
     <ul class="socials-links">
         <li>
-            <a href="#"><img src="/svg/facebook.svg" alt="Logo de facebook"></a>
+            <a href="https://www.facebook.com/people/Adhyanga/100092508739176/" target="blank"><img src="/svg/facebook.svg" alt="Logo de facebook"></a>
         </li>
     </ul>
 </footer>

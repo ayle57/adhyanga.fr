@@ -1,3 +1,8 @@
+<script>
+import Loader from "$lib/components/shared/Loader.svelte";
+</script>
+<Loader></Loader>
+
 <div class="container">
     <p>
         L’ayurvéda est une pratique millénaire en Inde qui se traduit littéralement par « Connaissance De La Vie »

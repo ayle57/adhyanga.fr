@@ -1,3 +1,9 @@
+<script>
+import Loader from "$lib/components/shared/Loader.svelte";
+</script>
+
+<Loader></Loader>
+
 <div class="legal-page">
     <h1>Mentions Légales</h1>
     <section>
@@ -78,10 +84,12 @@
     background-color: #f9f9f9;
 
     a {
-      background-color: #65E4A3FF;
-      padding: 10px 25px;
+      padding: 10px 20px;
+      background: #65E4A3FF;
       border-radius: 20px;
       color: #fff;
+      font-family: 'Montserrat';
+      font-weight: 500;
     }
 
     h1 {

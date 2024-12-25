@@ -1,3 +1,8 @@
+<script>
+import Loader from "$lib/components/shared/Loader.svelte";
+</script>
+<Loader></Loader>
+
 <div class="container">
     <p>La kinésiologie est née à la fin des années 1960, par John Thie avec le Touch For Health basé sur la médecine traditionnelle chinoise, en mettant l’accent sur L’EQUILIBRATION DU POTENTIEL DE LA PERSONNE ;
 

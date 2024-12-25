@@ -1,6 +1,7 @@
 <script>
     import {services} from "$lib/data/services.json";
     import Input from "$lib/components/shared/Input.svelte";
+    import Loader from "$lib/components/shared/Loader.svelte";
 
     let firstname = "";
     let lastname = "";
@@ -25,9 +26,15 @@
             .filter(option => option);
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-        console.log({
+
+        if (!acceptedTerms) {
+            alert("Veuillez accepter les termes de confidentialité.");
+            return;
+        }
+
+        const formData = {
             firstname,
             lastname,
             email,
@@ -38,15 +45,48 @@
             appointmentDate,
             appointmentTime,
             message
-        });
-        alert("Votre rendez-vous a été enregistré !");
+        };
+
+        try {
+            const response = await fetch("https://formspree.io/f/xdkkkebr", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                alert("Votre rendez-vous a été enregistré !");
+                firstname = "";
+                lastname = "";
+                email = "";
+                phone = "";
+                category = "";
+                duration = "";
+                selectedOption = "";
+                appointmentDate = "";
+                appointmentTime = "";
+                message = "";
+                acceptedTerms = false;
+            } else {
+                const error = await response.json();
+                console.error("Erreur lors de la soumission :", error);
+                alert("Une erreur s'est produite lors de l'enregistrement du rendez-vous.");
+            }
+        } catch (error) {
+            console.error("Erreur réseau :", error);
+            alert("Une erreur réseau s'est produite. Veuillez réessayer plus tard.");
+        }
     }
 </script>
+
+<Loader></Loader>
 
 <div class="main-container">
     <header>
         <a href="/#home">
-            <img src="/logoRemoved.png" alt="">
+            <img src="/logoRemoved.webp" alt="">
         </a>
     </header>
     <div class="form-container">
@@ -82,7 +122,6 @@
                     bind:value={phone}
                     variant="column"
             />
-
             <Input
                     id="category"
                     type="select"
@@ -91,7 +130,6 @@
                     options={services.map(service => ({ value: service.category, label: service.category }))}
                     variant="column"
             />
-
             {#if category}
                 <Input
                         id="duration"
@@ -102,7 +140,6 @@
                         variant="column"
                 />
             {/if}
-
             {#if availableOptions.length > 0}
                 <Input
                         id="options"
@@ -113,7 +150,6 @@
                         variant="column"
                 />
             {/if}
-
             <Input
                     id="appointmentDate"
                     type="date"

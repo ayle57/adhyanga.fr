@@ -1,0 +1,1 @@
+import{a,t as e}from"../chunks/disclose-version.D_i6iMF7.js";import"../chunks/legacy.C5GGrqF4.js";import{H as t}from"../chunks/runtime.BBG7IIjk.js";var m=e(`<h1>Erreur 404</h1> <a href="/#home">Retour à l'accueil</a>`,1);function i(r){var o=m();t(2),a(r,o)}export{i as component};

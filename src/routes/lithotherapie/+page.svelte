@@ -1,3 +1,9 @@
+<script>
+import Loader from "$lib/components/shared/Loader.svelte";
+</script>
+
+<Loader></Loader>
+
 <div class="container">
     <p>
         La lithothérapie est une approche globale du corps et de l’âme, qui permet un travail en profondeur en touchant différents plans que ce soit physique, énergétique, émotionnel, mental et spirituel tout comme le massage ayurvédique.
