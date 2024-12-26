@@ -24,8 +24,16 @@ section.section.contactSection div.contactSection-inner {
       flex: 0 0 50%;
       max-width: 50%;
 
-      button {
-         cursor: pointer;
+      button.btn-primary {
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: 2px solid $green;
+        background-color: $green;
+        color: $white;
+        font-size: 15px;
+        font-weight: 500;
+        font-family: "Montserrat";
+        cursor: pointer;
       }
     }
   }

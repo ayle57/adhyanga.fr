@@ -1,0 +1,107 @@
+@media screen and (max-width: 1700px) {
+  main#home.heroPage div.heroPage-inner {
+    header.navbarComponent nav.navbarLinks-container {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    section.homeSection div.homeSection-inner {
+      div.homeSection-content {
+        flex: 0 0 70%;
+        max-width: 70%;
+      }
+
+      div.homeSection-image {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  main#home.heroPage {
+    section.homeSection {
+      padding: 0 10px;
+      div.homeSection-inner div.homeSection-content {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        div.btn-container {
+          flex-direction: column;
+        }
+      }
+    }
+    &::before {
+      display: none;
+    }
+  }
+}
+
+
+@media screen and (max-width: 750px) {
+  section#services.section.servicesSection div.servicesSection-inner div.__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section#tarifs.section.tarifs div.tarifsSection-inner div.__body div.services-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section#cabinet.section.cabinetSection div.cabinetSection-inner div.cabinetSection-gallery {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section#testimonials.section.testimonialsSection div.testimonialsSection-inner div.testimonials-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section#contact.section.contactSection div.contactSection-inner {
+    div.contactSection-container {
+      flex-direction: column;
+
+      div.contactSection-map, div.contactSection-form, form {
+        flex: 0 0 100%;
+        max-width: 100%;
+        min-width: 100%;
+        iframe {
+          display: none;
+        }
+      }
+    }
+  }
+
+  section#about.section.aboutSection div.aboutSection-inner div.__body div.content-container {
+    flex-direction: column;
+    gap: 0;
+    height: 100%;
+    div.left, div.right {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  footer {
+    flex-direction: column;
+    ul {
+      flex: 0 0 100%;
+      max-width: 100%;
+      text-align: center !important;
+    }
+  }
+}
+
+
+@media screen and (max-width: 880px) {
+  section#cheque.section.chequeSection div.chequeSection-inner div.cheque-container h2 {
+    font-size: 5vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  section.homeSection {
+    margin-top: 5vh;
+  }
+}
