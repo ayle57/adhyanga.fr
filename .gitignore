@@ -1,2 +1,31 @@
 # idea directory
 .idea
+frontend/.idea
+backend/.idea
+docs/.idea
+
+# node_modules
+frontend/node_modules
+
+# vendor
+backend/vendor
+
+# next
+frontend/.next
+
+# build
+frontend/build
+frontend/out
+
+# env
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+backend/.env.local
+backend/.env.ANYTHING.local
+frontend/.env
+frontend/.env.local
+frontend/.env.ANYTHING.local
