@@ -29,3 +29,8 @@ backend/.env.ANYTHING.local
 frontend/.env
 frontend/.env.local
 frontend/.env.ANYTHING.local
+
+# ds store
+.DS_STORE
+backend/.DS_STORE
+frontend/.DS_STORE
