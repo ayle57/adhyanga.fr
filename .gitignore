@@ -32,5 +32,8 @@ frontend/.env.ANYTHING.local
 
 # ds store
 .DS_STORE
+.DS_Store
 backend/.DS_STORE
+backend/.DS_Store
 frontend/.DS_STORE
+frontend/.DS_Store
