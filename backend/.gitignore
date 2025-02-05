@@ -24,3 +24,6 @@ phpstan.neon
 # ds store
 .DS_STORE
 .DS_Store
+
+# secrets
+config/secrets
