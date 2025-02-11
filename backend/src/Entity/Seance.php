@@ -6,6 +6,8 @@ use App\Repository\SeanceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SeanceRepository::class)]
 class Seance
@@ -16,19 +18,30 @@ class Seance
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
+    #[Assert\Type(type: 'string')]
+    #[Groups(['appointment:read'])]
     private ?string $name = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
+    #[Assert\Type(type: 'integer')]
+    #[Assert\Positive]
     private ?int $duration = null;
 
     #[ORM\ManyToOne(inversedBy: 'seances')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Valid]
+    #[Assert\Type(type: 'App\Entity\Price')]
     private ?Price $price = null;
 
     /**
      * @var Collection<int, Option>
      */
     #[ORM\ManyToMany(targetEntity: Option::class, inversedBy: 'seances')]
+    #[Groups(['appointment:read'])]
     private Collection $options;
 
     /**

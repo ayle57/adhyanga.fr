@@ -6,6 +6,8 @@ use App\Repository\PriceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PriceRepository::class)]
 class Price
@@ -15,19 +17,11 @@ class Price
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?float $adult = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?float $teenager = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?float $child = null;
-
     /**
      * @var Collection<int, Seance>
      */
     #[ORM\OneToMany(targetEntity: Seance::class, mappedBy: 'price')]
+    #[Groups(['appointment:read'])]
     private Collection $seances;
 
     /**
@@ -42,51 +36,28 @@ class Price
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column]
+    #[Assert\NotBlank]
+    #[Assert\Positive]
+    #[Assert\Type(type: 'float')]
+    #[Groups(['appointment:read'])]
+    private ?float $adult = null;
+
+    #[ORM\Column(nullable: true)]
+    #[Assert\Type(type: 'float')]
+    private ?float $young = null;
+
     public function __construct()
     {
         $this->seances = new ArrayCollection();
+        $this->setCreatedAt(new \DateTimeImmutable());
+        $this->setUpdatedAt(new \DateTimeImmutable());
         $this->appointments = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getAdult(): ?float
-    {
-        return $this->adult;
-    }
-
-    public function setAdult(?float $adult): static
-    {
-        $this->adult = $adult;
-
-        return $this;
-    }
-
-    public function getTeenager(): ?float
-    {
-        return $this->teenager;
-    }
-
-    public function setTeenager(?float $teenager): static
-    {
-        $this->teenager = $teenager;
-
-        return $this;
-    }
-
-    public function getChild(): ?float
-    {
-        return $this->child;
-    }
-
-    public function setChild(?float $child): static
-    {
-        $this->child = $child;
-
-        return $this;
     }
 
     /**
@@ -169,6 +140,30 @@ class Price
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getAdult(): ?float
+    {
+        return $this->adult;
+    }
+
+    public function setAdult(float $adult): static
+    {
+        $this->adult = $adult;
+
+        return $this;
+    }
+
+    public function getYoung(): ?float
+    {
+        return $this->young;
+    }
+
+    public function setYoung(?float $young): static
+    {
+        $this->young = $young;
 
         return $this;
     }

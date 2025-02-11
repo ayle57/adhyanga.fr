@@ -6,6 +6,8 @@ use App\Repository\OptionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: OptionRepository::class)]
 class Option
@@ -16,6 +18,9 @@ class Option
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 0, max: 255)]
+    #[Groups(['appointment:read'])]
     private ?string $name = null;
 
     /**
@@ -25,13 +30,19 @@ class Option
     private Collection $seances;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
+    #[Assert\Type('\DateTimeImmutable')]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
+    #[Assert\Type('\DateTimeImmutable')]
     private ?\DateTimeImmutable $updatedAt = null;
 
     public function __construct()
     {
+        $this->setCreatedAt(new \DateTimeImmutable());
+        $this->setUpdatedAt(new \DateTimeImmutable());
         $this->seances = new ArrayCollection();
     }
 
