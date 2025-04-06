@@ -1,0 +1,29 @@
+@use "./_montserrat.scss" as *;
+@use "./_variables.scss" as *;
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font: {
+    family: Montserrat, sans-serif;
+    weight: 400;
+    size: 16px;
+    style: normal;
+  };
+  line-height: 1.4;
+  overflow-x: hidden;
+  color: $dark_cyan;
+}
+
+a {
+  text-decoration: none;
+  color: $dark_cyan;
+}
+
+ul,ol,li {
+  list-style: none;
+}

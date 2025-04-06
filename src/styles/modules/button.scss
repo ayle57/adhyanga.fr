@@ -1,0 +1,29 @@
+@use "../base/variables" as *;
+
+.btn {
+  padding: 12px 23px;
+  border-radius: $border_radius_small;
+  box-shadow: $shadow_default;
+
+  &.btn-primary {
+    background-color: $dark_cyan;
+  }
+
+  &.btn-small {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  &.btn-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 15px;
+    color: $gallery;
+
+    & img, & svg {
+      width: 20px;
+      height: auto;
+    }
+  }
+}
