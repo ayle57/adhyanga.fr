@@ -1,12 +1,25 @@
 @use "../base/variables" as *;
 
 .btn {
+  display: inline-block;
   padding: 12px 23px;
   border-radius: $border_radius_small;
   box-shadow: $shadow_default;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(0.98);
+  }
 
   &.btn-primary {
     background-color: $dark_cyan;
+    color: $gallery;
+  }
+
+  &.btn-secondary {
+    background-color: $gallery;
+    border: 2px solid $dark_cyan;
   }
 
   &.btn-small {

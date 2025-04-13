@@ -26,10 +26,12 @@
 
 <style lang="scss">
 	.navbar {
+		position: relative;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding: 20px 5vw;
+		z-index: 10;
 
 		.navbar-brand {
 			flex: 0 0 30%;
