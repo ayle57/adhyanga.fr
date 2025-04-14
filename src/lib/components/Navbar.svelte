@@ -4,10 +4,10 @@
 	</div>
 	<ul class="navbar-links">
 		<li class="navbar-links__item">
-			<a href="/">Nos tarifs</a>
+			<a href="/">Nos séances</a>
 		</li>
 		<li class="navbar-links__item">
-			<a href="/">Nos séances</a>
+			<a href="/">Nos tarifs</a>
 		</li>
 		<li class="navbar-links__item">
 			<a href="/">À propos</a>

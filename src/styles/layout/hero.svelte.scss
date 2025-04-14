@@ -1,6 +1,6 @@
 @use '../base/variables' as *;
 
-section.section.hero-section {
+section.section.hero {
   flex: 0 0 60%;
   max-width: 60%;
   height: 80vh;
@@ -14,7 +14,7 @@ section.section.hero-section {
 
     h4 {
       font-size: 24px;
-      font-weight: 400;
+      font-weight: 600;
       position: relative;
       line-height: 2;
 
@@ -23,7 +23,7 @@ section.section.hero-section {
         display: block;
         position: absolute;
         bottom: 0;
-        height: 2px;
+        height: 3px;
         width: 25%;
         background-color: $dark_cyan;
       }

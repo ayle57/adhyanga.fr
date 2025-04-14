@@ -1,8 +1,10 @@
 <script>
 	import Navbar from '$lib/components/Navbar.svelte';
 	import '../styles/global.scss';
+
 	import '../styles/layout/landing.svelte.scss';
 	import '../styles/layout/hero.svelte.scss';
+	import '../styles/layout/seances.svelte.scss';
 </script>
 
 <main class="landing-layout">
@@ -10,7 +12,7 @@
 		<img src="/images/chief.webp" alt="Adeline Pierrot, praticienne en ayurvéda et en kinésiologie">
 	</div>
 	<Navbar />
-	<section class="section hero-section">
+	<section class="section hero">
 		<div class="hero-inner">
 			<div class="hero-content">
 				<h4>Bienvenue chez Adhyanga</h4>
@@ -25,6 +27,42 @@
 					</div>
 					<div>
 						<a href="/" class="btn btn-secondary">Nous contacter</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section seances">
+		<div class="seances-inner">
+			<div class="seances-container">
+				<div class="seance-item">
+					<div class="seance-item__header">
+						<img src="/images/icons/leaf.svg" alt="">
+					</div>
+					<div class="seance-item__body">
+						<h2>L'ayurvéda</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet dignissimos, eligendi et eum expedita id in inventore ipsa laudantium minima natus non pariatur quidem quos ratione temporibus voluptas voluptate voluptatibus!</p>
+						<a href="#" class="btn btn-secondary">En savoir plus</a>
+					</div>
+				</div>
+				<div class="seance-item">
+					<div class="seance-item__header">
+						<img src="/images/icons/person.svg" alt="">
+					</div>
+					<div class="seance-item__body">
+						<h2>La kinésiologie</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium beatae commodi esse expedita labore, magnam molestias obcaecati similique. Animi deserunt error fugit hic perferendis, perspiciatis porro quasi recusandae reprehenderit ut!</p>
+						<a href="#" class="btn btn-primary">En savoir plus</a>
+					</div>
+				</div>
+				<div class="seance-item">
+					<div class="seance-item__header">
+						<img src="/images/icons/moutain.svg" alt="">
+					</div>
+					<div class="seance-item__body">
+						<h2>La lithothérapie</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto autem dicta, eos illum ipsum maiores, mollitia nam pariatur provident quia reiciendis repellat, repudiandae tempora totam velit veritatis voluptates voluptatum.</p>
+						<a href="#" class="btn btn-secondary">En savoir plus</a>
 					</div>
 				</div>
 			</div>
