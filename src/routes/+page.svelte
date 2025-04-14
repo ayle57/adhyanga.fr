@@ -17,7 +17,8 @@
 			<div class="hero-content">
 				<h4>Bienvenue chez Adhyanga</h4>
 				<h1>Votre <span>bien-être</span> est<br /> notre <span>priorité</span></h1>
-				<p>Which seems to confirm the idea that an basic component of a broad understanding of the development methodology is regularly debated in the light of The Influence of Deliberate Parameter.</p>
+				<p>Which seems to confirm the idea that an basic component of a broad understanding of the development
+					methodology is regularly debated in the light of The Influence of Deliberate Parameter.</p>
 				<div class="hero-content__buttons">
 					<div>
 						<a href="/" class="btn btn-primary">
@@ -37,32 +38,38 @@
 			<div class="seances-container">
 				<div class="seance-item">
 					<div class="seance-item__header">
-						<img src="/images/icons/leaf.svg" alt="">
+						<div class="image-container secondary">
+							<img src="/images/icons/leaf.svg" alt="">
+						</div>
 					</div>
 					<div class="seance-item__body">
 						<h2>L'ayurvéda</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet dignissimos, eligendi et eum expedita id in inventore ipsa laudantium minima natus non pariatur quidem quos ratione temporibus voluptas voluptate voluptatibus!</p>
-						<a href="#" class="btn btn-secondary">En savoir plus</a>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<a href="/" class="btn btn-secondary">En savoir plus</a>
 					</div>
 				</div>
 				<div class="seance-item">
 					<div class="seance-item__header">
-						<img src="/images/icons/person.svg" alt="">
+						<div class="image-container">
+							<img src="/images/icons/person.svg" alt="">
+						</div>
 					</div>
 					<div class="seance-item__body">
 						<h2>La kinésiologie</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium beatae commodi esse expedita labore, magnam molestias obcaecati similique. Animi deserunt error fugit hic perferendis, perspiciatis porro quasi recusandae reprehenderit ut!</p>
-						<a href="#" class="btn btn-primary">En savoir plus</a>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<a href="/" class="btn btn-primary">En savoir plus</a>
 					</div>
 				</div>
 				<div class="seance-item">
 					<div class="seance-item__header">
-						<img src="/images/icons/moutain.svg" alt="">
+						<div class="image-container secondary">
+							<img src="/images/icons/moutain.svg" alt="">
+						</div>
 					</div>
 					<div class="seance-item__body">
 						<h2>La lithothérapie</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto autem dicta, eos illum ipsum maiores, mollitia nam pariatur provident quia reiciendis repellat, repudiandae tempora totam velit veritatis voluptates voluptatum.</p>
-						<a href="#" class="btn btn-secondary">En savoir plus</a>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<a href="/" class="btn btn-secondary">En savoir plus</a>
 					</div>
 				</div>
 			</div>

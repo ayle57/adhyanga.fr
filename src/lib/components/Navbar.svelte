@@ -1,4 +1,23 @@
-<nav class="navbar">
+<script>
+	import { onMount } from 'svelte';
+
+	let isBlurred = false;
+
+	onMount(() => {
+		const handleScroll = () => {
+			isBlurred = window.scrollY > 10;
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		handleScroll();
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	});
+</script>
+
+<nav class="navbar {isBlurred ? 'blurred' : ''}">
 	<div class="navbar-brand">
 		<img src="/images/logo.webp" alt="Logo d'adhyanga" class="navbar-brand__logo" />
 	</div>
@@ -24,14 +43,26 @@
 	</ul>
 </nav>
 
+<div class="fake-navbar"></div>
+
 <style lang="scss">
+	.fake-navbar {
+		height: 120px;
+	}
 	.navbar {
-		position: relative;
+		position: fixed;
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding: 20px 5vw;
 		z-index: 10;
+		transition: all 300ms;
+
+		&.blurred {
+      backdrop-filter: blur(10px);
+			padding: 10px 5vw;
+    }
 
 		.navbar-brand {
 			flex: 0 0 30%;
