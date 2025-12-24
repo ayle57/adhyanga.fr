@@ -1471,6 +1471,28 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *     },
  *     embed_sourcemap?: bool|null, // Deprecated: Option "embed_sourcemap" at "symfonycasts_sass.embed_sourcemap" is deprecated. Use "sass_options.embed_source_map" instead". // Default: null
  * }
+ * @psalm-type DoctrineDiagramConfig = array{
+ *     er?: array{
+ *         filename?: scalar|null, // Default: "%kernel.project_dir%/er"
+ *         size?: "mini"|"midi"|"maxi", // Default: "midi"
+ *         theme?: scalar|null, // Default: "_none_"
+ *         connection?: scalar|null, // Default: null
+ *         exclude?: list<scalar|null>,
+ *     },
+ *     class?: array{
+ *         filename?: scalar|null, // Default: "%kernel.project_dir%/class"
+ *         size?: "mini"|"midi"|"maxi", // Default: "midi"
+ *         theme?: scalar|null, // Default: "_none_"
+ *         em?: scalar|null, // Default: null
+ *         exclude?: list<scalar|null>,
+ *     },
+ *     convert?: array{
+ *         format?: "puml"|"png"|"svg", // Default: "svg"
+ *         converter?: "auto"|"jar"|"server", // Default: "auto"
+ *         jar?: scalar|null, // Default: null
+ *         server?: scalar|null, // Default: "http://www.plantuml.com/plantuml"
+ *     },
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -1502,6 +1524,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         monolog?: MonologConfig,
  *         maker?: MakerConfig,
  *         symfonycasts_sass?: SymfonycastsSassConfig,
+ *         doctrine_diagram?: DoctrineDiagramConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -1533,6 +1556,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
  *         security?: SecurityConfig,
  *         monolog?: MonologConfig,
  *         symfonycasts_sass?: SymfonycastsSassConfig,
+ *         doctrine_diagram?: DoctrineDiagramConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

@@ -1,203 +1,203 @@
-# Schéma de base de données
+# SCHÉMA FINAL — BASE DE DONNÉES
+## 👤 `users`
 
-## 👤 users
-> Comptes techniques (admin / praticienne)
+**Comptes techniques (admin / praticienne)**
 
-| Champ | Type |
-|-----|-----|
-| id | int (PK) |
-| email | varchar(255) |
-| password | text |
-| roles | array[text] |
-| created_at | timestamp |
+| Champ      | Type         | Description                        |
+| ---------- | ------------ | ---------------------------------- |
+| id         | int (PK)     | Identifiant                        |
+| email      | varchar(255) | Email de connexion                 |
+| password   | text         | Mot de passe hashé                 |
+| roles      | json         | Rôles Symfony (`ROLE_ADMIN`, etc.) |
+| created_at | timestamp    | Date de création                   |
 
----
+### Relations
 
-## 👥 customers
-> Clients
-
-| Champ | Type |
-|-----|-----|
-| id | int (PK) |
-| firstname | varchar(255) |
-| lastname | varchar(255) |
-| email | varchar(255) |
-| phone | varchar(50) |
-| notes | text |
-| created_at | timestamp |
+* ❌ Aucune
 
 ---
 
-## 💆 seances
-> Type de soin (sans durée ni prix)
+## 👥 `customers`
 
-| Champ | Type |
-|-----|-----|
-| id | int (PK) |
-| name | varchar(255) |
-| description | text |
-| category | varchar(100) |
+**Clients (sans authentification)**
 
-Exemples :
-- Kinésiologie
-- Massage ayurvédique
-- Lithothérapie
+| Champ      | Type         | Description    |
+| ---------- | ------------ | -------------- |
+| id         | int (PK)     | Identifiant    |
+| firstname  | varchar(255) | Prénom         |
+| lastname   | varchar(255) | Nom            |
+| email      | varchar(255) | Email          |
+| phone      | varchar(50)  | Téléphone      |
+| notes      | text         | Notes internes |
+| created_at | timestamp    | Création       |
 
----
+### Relations
 
-## ⏱️ seance_variants
-> Durée + prix de base d’une séance
-
-| Champ | Type |
-|-----|-----|
-| id | int (PK) |
-| seance_id | int (FK → seances.id) |
-| duration_minutes | int |
-| base_price | int |
+* **OneToMany** → `appointments`
 
 ---
 
-## ➕ seance_options
-> Options possibles pour une séance
+## 💆 `seances`
 
-| Champ | Type |
-|-----|-----|
-| id | int (PK) |
-| seance_id | int (FK → seances.id) |
-| name | varchar(255) |
-| description | text |
-| extra_time_minutes | int |
-| extra_price | int |
+**Type de soin (concept métier)**
 
----
+| Champ       | Type         | Description                        |
+| ----------- | ------------ | ---------------------------------- |
+| id          | int (PK)     | Identifiant                        |
+| name        | varchar(255) | Nom                                |
+| description | text         | Description                        |
+| category    | varchar(100) | Catégorie (massage, énergie, etc.) |
 
-## 📦 formulas
-> Forfaits
+### Relations
 
-| Champ | Type |
-|-----|-----|
-| id | int (PK) |
-| name | varchar(255) |
-| description | text |
-| price | int |
+* **OneToMany** → `seance_variants`
+* **OneToMany** → `seance_options`
 
 ---
 
-## 🔗 formula_items
-> Contenu d’une formule
+## ⏱️ `seance_variants`
 
-| Champ | Type |
-|-----|-----|
-| id | int (PK) |
-| formula_id | int (FK → formulas.id) |
-| seance_variant_id | int (FK → seance_variants.id) |
-| quantity | int |
+**Durée + prix d’une séance**
 
----
+| Champ            | Type     | Description |
+| ---------------- | -------- | ----------- |
+| id               | int (PK) | Identifiant |
+| seance_id        | int (FK) | Séance      |
+| duration_minutes | int      | Durée       |
+| base_price       | int      | Prix        |
 
-## 📅 appointments
-> Rendez-vous
+### Relations
 
-| Champ | Type |
-|-----|-----|
-| id | int (PK) |
-| customer_id | int (FK → customers.id) |
-| seance_variant_id | int (FK → seance_variants.id) |
-| formula_item_id | int (nullable, FK → formula_items.id) |
-| start_time | timestamp |
-| end_time | timestamp |
-| status | varchar(50) |
-| notes | text |
-
-Statuts possibles :
-- scheduled
-- canceled
-- done
+* **ManyToOne** → `seances`
+* **OneToMany** → `formula_items`
+* **OneToMany** → `appointments`
 
 ---
 
-## 🎯 appointment_options
-> Options choisies lors d’un rendez-vous
+## ➕ `seance_options`
 
-| Champ | Type |
-|-----|-----|
-| id | int (PK) |
-| appointment_id | int (FK → appointments.id) |
-| seance_option_id | int (FK → seance_options.id) |
+**Options ajoutables à une séance**
 
----
+| Champ              | Type         | Description      |
+| ------------------ | ------------ | ---------------- |
+| id                 | int (PK)     | Identifiant      |
+| seance_id          | int (FK)     | Séance concernée |
+| name               | varchar(255) | Nom              |
+| description        | text         | Description      |
+| extra_time_minutes | int          | Temps ajouté     |
+| extra_price        | int          | Prix ajouté      |
 
-# 🔗 Relations principales
+### Relations
 
-- **Customer** → 1..N Appointments
-- **Seance** → 1..N SeanceVariants
-- **Seance** → 1..N SeanceOptions
-- **Formula** → 1..N FormulaItems
-- **SeanceVariant** → N..N Formulas (via formula_items)
-- **Appointment** → N..N SeanceOptions (via appointment_options)
+* **ManyToOne** → `seances`
+* **ManyToMany** ↔ `appointments` (via `appointment_options`)
 
 ---
 
-# 📌 EXEMPLES CONCRETS
+## 📦 `formulas`
 
-## Exemple 1 — Séances & variantes
+**Forfaits / packs**
 
-### seances
-- Kinésiologie
-- Massage ayurvédique
+| Champ       | Type         | Description |
+| ----------- | ------------ | ----------- |
+| id          | int (PK)     | Identifiant |
+| name        | varchar(255) | Nom         |
+| description | text         | Description |
+| price       | int          | Prix global |
 
-### seance_variants
-| Séance | Durée | Prix |
-|------|------|------|
-| Kinésiologie | 60 min | 70€ |
-| Kinésiologie | 90 min | 95€ |
-| Massage ayurvédique | 60 min | 75€ |
-| Massage ayurvédique | 90 min | 100€ |
+### Relations
 
----
-
-## Exemple 2 — Options de séance (Ayurveda)
-
-### seance_options (liées à Massage ayurvédique)
-| Option | Temps + | Prix + |
-|------|--------|--------|
-| Bol Kansu | +15 min | +20€ |
-| Huiles spécifiques | +10 min | +15€ |
-| Rituel pieds | +20 min | +25€ |
+* **OneToMany** → `formula_items`
 
 ---
 
-## Exemple 3 — Formule « Découverte »
+## 🔗 `formula_items`
 
-### formulas
-**Découverte**
-> Découvrir deux pratiques complémentaires
+**Contenu d’une formule**
 
-### formula_items
-| Séance | Durée | Quantité |
-|------|------|----------|
-| Kinésiologie | 60 min | 1 |
-| Massage ayurvédique | 60 min | 1 |
+| Champ             | Type     | Description       |
+| ----------------- | -------- | ----------------- |
+| id                | int (PK) | Identifiant       |
+| formula_id        | int (FK) | Formule           |
+| seance_variant_id | int (FK) | Séance incluse    |
+| quantity          | int      | Nombre de séances |
 
----
+### Relations
 
-## Exemple 4 — Rendez-vous issu de la formule
-
-Client : **Marie Dupont**
-
-- Séance : Massage ayurvédique – 60 min
-- Option ajoutée : Bol Kansu
-- Temps total : **75 min**
-- Prix :
-    - Base : inclus dans la formule
-    - Option : +20€
+* **ManyToOne** → `formulas`
+* **ManyToOne** → `seance_variants`
+* **OneToMany** → `appointments`
 
 ---
 
-## Exemple 5 — Rendez-vous hors formule
+## 📅 `appointments`
 
-Client : **Paul Martin**
+**Rendez-vous**
 
-- Séance : Kinésiologie – 90 min
-- Options : aucune
-- Prix total : **95€**
+| Champ             | Type               | Description         |
+| ----------------- | ------------------ | ------------------- |
+| id                | int (PK)           | Identifiant         |
+| customer_id       | int (FK)           | Client              |
+| seance_variant_id | int (FK)           | Séance              |
+| formula_item_id   | int (FK, nullable) | Issue d’une formule |
+| start_time        | timestamp          | Début               |
+| end_time          | timestamp          | Fin                 |
+| status            | varchar(50) / enum | État                |
+| notes             | text               | Notes               |
+
+### Relations
+
+* **ManyToOne** → `customers`
+* **ManyToOne** → `seance_variants`
+* **ManyToOne (nullable)** → `formula_items`
+* **ManyToMany** ↔ `seance_options` (via `appointment_options`)
+
+---
+
+## 🎯 `appointment_options`
+
+**Table de liaison RDV ↔ options**
+
+| Champ            | Type     | Description |
+| ---------------- | -------- | ----------- |
+| id               | int (PK) | Identifiant |
+| appointment_id   | int (FK) | Rendez-vous |
+| seance_option_id | int (FK) | Option      |
+
+### Relations
+
+* **ManyToOne** → `appointments`
+* **ManyToOne** → `seance_options`
+
+---
+
+# 🔗 RÉCAPITULATIF DES RELATIONS
+
+| Entité        | Relation             | Cible         |
+| ------------- | -------------------- | ------------- |
+| Customer      | OneToMany            | Appointment   |
+| Seance        | OneToMany            | SeanceVariant |
+| Seance        | OneToMany            | SeanceOption  |
+| SeanceVariant | ManyToOne            | Seance        |
+| Formula       | OneToMany            | FormulaItem   |
+| FormulaItem   | ManyToOne            | Formula       |
+| FormulaItem   | ManyToOne            | SeanceVariant |
+| Appointment   | ManyToOne            | Customer      |
+| Appointment   | ManyToOne            | SeanceVariant |
+| Appointment   | ManyToOne (nullable) | FormulaItem   |
+| Appointment   | ManyToMany           | SeanceOption  |
+
+---
+
+# 🧠 STATUTS & ENUMS
+
+## `AppointmentStatus`
+
+```php
+enum AppointmentStatus: string
+{
+    case Scheduled = 'scheduled';
+    case Canceled  = 'canceled';
+    case Done      = 'done';
+}
+```

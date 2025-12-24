@@ -1,0 +1,8 @@
+parameters:
+    level: 8
+    paths:
+        - src/
+        - tests/
+    ignoreErrors:
+        - '#Property .+::\$id .+ is never assigned#'
+        - '#Property .+::\$id .+ is never read#'
