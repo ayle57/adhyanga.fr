@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SeanceRepository::class)]
 class Seance
@@ -18,6 +19,8 @@ class Seance
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Veuillez entrer un nom pour la séance")]
+    #[Assert\Length(max: 255, maxMessage: "Veuillez entrer un nom de séance de moins de 255 caractères")]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

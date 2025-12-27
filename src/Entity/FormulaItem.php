@@ -6,6 +6,7 @@ use App\Repository\FormulaItemRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: FormulaItemRepository::class)]
 class FormulaItem
@@ -23,6 +24,13 @@ class FormulaItem
     private ?SeanceVariant $seanceVariant = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\NotNull(message: "Veuillez entrer une quantité")]
+    #[Assert\Type(type: 'numeric', message: "Veuillez entrer une quantité qui est un nombre")]
+    #[Assert\PositiveOrZero(message: "Veuillez entrer une quantité n'étant pas négative")]
+    #[Assert\LessThan(
+        value: 100000,
+        message: "Veuillez entrer une quantité en dessous de 100000"
+    )]
     private ?int $quantity = null;
 
     /**

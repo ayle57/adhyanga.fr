@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
 class Customer
@@ -16,22 +17,34 @@ class Customer
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(max: 255, maxMessage: "Veuillez entrer un prénom de moins de 255 caractères")]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255, maxMessage: "Veuillez entrer un nom de famille de moins de 255 caractères")]
+    #[Assert\NotBlank(message: "Veuillez entrer un nom de famille")]
     private ?string $lastname = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(max: 255, maxMessage: "Veuillez entrer une adresse email de moins de 255 caractères")]
+    #[Assert\NotBlank(message: "Veuillez entrer une adresse email")]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
+    #[Assert\Length(max: 50, maxMessage: "Veuillez entrer un numéro de téléphone de moins de 50 caractères")]
+    #[Assert\NotBlank(message: "Veuillez entrer un numéro de téléphone")]
+    #[Assert\Regex(
+        pattern: "/^(?:\+33|0)[1-9](?:[\s\.]?\d{2}){4}$/",
+        message: "Numéro de téléphone français invalide"
+    )]
     private ?string $phone = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $notes = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "Veuillez entrer une date de création")]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
@@ -42,6 +55,7 @@ class Customer
 
     public function __construct()
     {
+        $this->setCreatedAt(new \DateTimeImmutable());
         $this->appointments = new ArrayCollection();
     }
 

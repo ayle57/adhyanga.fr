@@ -6,6 +6,7 @@ use App\Repository\FormulaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: FormulaRepository::class)]
 class Formula
@@ -16,13 +17,23 @@ class Formula
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255, maxMessage: "Veuillez entrer un nom de formule de moins de 255 caractères")]
+    #[Assert\NotBlank(message: "Veuillez entrer un nom de formule")]
     private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(max: 255, maxMessage: "Veuillez entrer une description de moins de 255 caractères")]
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?int $price = null;
+    #[Assert\NotNull(message: "Veuillez entrer un prix")]
+    #[Assert\Type(type: 'numeric', message: "Veuillez entrer un prix qui est un nombre")]
+    #[Assert\PositiveOrZero(message: "Veuillez entrer un prix n'étant pas négatif")]
+    #[Assert\LessThan(
+        value: 100000,
+        message: "Veuillez entrer un prix en dessous de 100000 euro"
+    )]
+    private ?float $price = null;
 
     /**
      * @var Collection<int, FormulaItem>

@@ -6,6 +6,7 @@ use App\Repository\SeanceVariantRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SeanceVariantRepository::class)]
 class SeanceVariant
@@ -20,9 +21,11 @@ class SeanceVariant
     private ?Seance $seance = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "Veuillez entrer une durée en minutes")]
     private ?int $durationMinutes = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "Veuillez entrer un prix de base")]
     private ?int $base_price = null;
 
     /**

@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AppointmentRepository::class)]
 class Appointment
@@ -28,9 +29,12 @@ class Appointment
     private ?FormulaItem $formulaItem = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "Veuillez entrer une date et une heure de départ")]
+    #[Assert\DateTime(message: "Veuillez entrer une date et une heure")]
     private ?\DateTime $startTime = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\DateTime]
     private ?\DateTime $endTime = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -45,8 +49,18 @@ class Appointment
     #[ORM\OneToMany(targetEntity: AppointmentOption::class, mappedBy: 'appointment')]
     private Collection $appointmentOptions;
 
+    #[ORM\Column]
+    #[Assert\NotBlank(message: "Veuillez entrer une date de création")]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column]
+    #[Assert\NotBlank(message: "Veuillez entrer une date de création")]
+    private ?\DateTimeImmutable $updatedAt = null;
+
     public function __construct()
     {
+        $this->setCreatedAt(new \DateTimeImmutable());
+        $this->setUpdatedAt(new \DateTimeImmutable());
         $this->appointmentOptions = new ArrayCollection();
     }
 
@@ -164,6 +178,30 @@ class Appointment
                 $appointmentOption->setAppointment(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
