@@ -10,7 +10,11 @@ use App\Entity\Seance;
 use App\Entity\SeanceOption;
 use App\Entity\SeanceVariant;
 use App\Entity\Customer;
+use App\Entity\GiftCard;
+use App\Entity\Payment;
 use App\Enum\AppointmentStatusEnum;
+use App\Enum\PaymentMethodEnum;
+use App\Enum\PaymentStatusEnum;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -36,7 +40,6 @@ class AppFixtures extends Fixture
                 ->setCreatedAt(\DateTimeImmutable::createFromMutable(
                     $faker->dateTimeBetween('-2 years', 'now')
                 ));
-
             $manager->persist($customer);
             $customers[] = $customer;
             $this->addReference('customer_'.$i, $customer);
@@ -56,20 +59,16 @@ class AppFixtures extends Fixture
 
             $manager->persist($seance);
 
-            // Variants
             foreach ([30, 60, 90] as $index => $duration) {
                 $variant = new SeanceVariant();
                 $variant
                     ->setSeance($seance)
                     ->setDurationMinutes($duration)
                     ->setBasePrice($faker->numberBetween(60, 120));
-
                 $manager->persist($variant);
                 $variants[] = $variant;
-                $this->addReference("seance_variant_{$i}_{$index}", $variant);
             }
 
-            // Options
             foreach (range(1, $faker->numberBetween(1, 4)) as $j) {
                 $option = new SeanceOption();
                 $option
@@ -78,10 +77,8 @@ class AppFixtures extends Fixture
                     ->setExtraTimeMinutes($faker->randomElement([0, 10, 15, 20]))
                     ->setExtraPrice($faker->numberBetween(5, 25))
                     ->setSeance($seance);
-
                 $manager->persist($option);
                 $options[] = $option;
-                $this->addReference("seance_option_{$i}_{$j}", $option);
             }
         }
 
@@ -96,7 +93,6 @@ class AppFixtures extends Fixture
                 ->setPrice($faker->numberBetween(10, 100));
             $manager->persist($formula);
             $formulas[] = $formula;
-            $this->addReference("formula_{$i}", $formula);
         }
 
         $manager->flush();
@@ -107,7 +103,6 @@ class AppFixtures extends Fixture
         foreach (range(1, 50) as $i) {
             $customer = $faker->randomElement($customers);
             $variant  = $faker->randomElement($variants);
-
             $start = $faker->dateTimeBetween('-1 month', '+1 month');
 
             $appointment = new Appointment();
@@ -121,24 +116,52 @@ class AppFixtures extends Fixture
 
             $manager->persist($appointment);
 
-            // Appointment Options (0 à 3)
             foreach ($faker->randomElements($options, $faker->numberBetween(0, 3)) as $option) {
                 $ao = new AppointmentOption();
                 $ao->setAppointment($appointment)
                     ->setSeanceOption($option);
-
                 $manager->persist($ao);
             }
 
-            // Formula Items (0 à 2)
             foreach ($faker->randomElements($formulas, $faker->numberBetween(0, 2)) as $formula) {
                 $fi = new FormulaItem();
                 $fi->addAppointment($appointment)
                     ->setFormula($formula)
                     ->setQuantity($faker->numberBetween(1, 3));
-
                 $manager->persist($fi);
             }
+        }
+
+        // -----------------------
+        // 5. GiftCards + Payments
+        // -----------------------
+        foreach (range(1, 20) as $i) {
+            $customer = $faker->randomElement($customers);
+
+            $giftCard = new GiftCard();
+            $giftCard
+                ->setPurchaser($customer)
+                ->setRecipientName($faker->name)
+                ->setAmount($faker->numberBetween(50, 200))
+                ->setMessage($faker->boolean(50) ? $faker->sentence : null)
+                ->setIsUsed($faker->boolean(20))
+                ->setExpiresAt($faker->dateTimeBetween('+1 month', '+1 year'))
+                ->setCode(strtoupper($faker->bothify('GC-####-???')));
+
+            $manager->persist($giftCard);
+
+            // Payment pour la GiftCard
+            $payment = new Payment();
+            $payment
+                ->setGiftCard($giftCard)
+                ->setAmount($giftCard->getAmount())
+                ->setMethod($faker->randomElement(PaymentMethodEnum::cases()))
+                ->setStatus($faker->randomElement(PaymentStatusEnum::cases()))
+                ->setPaidAt($faker->boolean(80) ? $faker->dateTimeBetween('-1 month', 'now') : null)
+                ->setReference(strtoupper($faker->bothify('PAY-#####')));
+
+            $manager->persist($payment);
+            $giftCard->setPayment($payment);
         }
 
         $manager->flush();
