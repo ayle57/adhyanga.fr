@@ -53,10 +53,17 @@ class Customer
     #[ORM\OneToMany(targetEntity: Appointment::class, mappedBy: 'customer')]
     private Collection $appointments;
 
+    /**
+     * @var Collection<int, GiftCard>
+     */
+    #[ORM\OneToMany(targetEntity: GiftCard::class, mappedBy: 'purchaser', orphanRemoval: true)]
+    private Collection $giftCards;
+
     public function __construct()
     {
         $this->setCreatedAt(new \DateTimeImmutable());
         $this->appointments = new ArrayCollection();
+        $this->giftCards = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,6 +167,36 @@ class Customer
             // set the owning side to null (unless already changed)
             if ($appointment->getCustomer() === $this) {
                 $appointment->setCustomer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, GiftCard>
+     */
+    public function getGiftCards(): Collection
+    {
+        return $this->giftCards;
+    }
+
+    public function addGiftCard(GiftCard $giftCard): static
+    {
+        if (!$this->giftCards->contains($giftCard)) {
+            $this->giftCards->add($giftCard);
+            $giftCard->setPurchaser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGiftCard(GiftCard $giftCard): static
+    {
+        if ($this->giftCards->removeElement($giftCard)) {
+            // set the owning side to null (unless already changed)
+            if ($giftCard->getPurchaser() === $this) {
+                $giftCard->setPurchaser(null);
             }
         }
 
