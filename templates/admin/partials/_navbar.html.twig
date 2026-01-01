@@ -1,26 +1,48 @@
-<header class="p-3 text-bg-dark">
+<header class="border-bottom bg-white">
     <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"><a href="/"
-                                                                                                            class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
+        <div class="d-flex align-items-center justify-content-between py-2">
+
+            {# Logo #}
+            <a href="{{ path('admin_dashboard') }}" class="d-flex align-items-center text-decoration-none">
+                <img src="{{ asset('images/logo_admin.png') }}" width="36" height="36" alt="">
             </a>
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+
+            {# Nav #}
+            <ul class="nav gap-2">
+                <li class="nav-item">
+                    <a href="{{ path('admin_dashboard') }}"
+                       class="nav-link px-2 {{ currentRoute == 'admin_dashboard' ? 'fw-semibold text-primary' : 'text-muted' }}">
+                        Utilisateurs
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#"
+                       class="nav-link px-2 {{ currentRoute == 'admin_pricing' ? 'fw-semibold text-primary' : 'text-muted' }}">
+                        Rendez-vous
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#"
+                       class="nav-link px-2 {{ currentRoute starts with 'admin_faq' ? 'fw-semibold text-primary' : 'text-muted' }}">
+                        Offres
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#"
+                       class="nav-link px-2 {{ currentRoute == 'admin_about' ? 'fw-semibold text-primary' : 'text-muted' }}">
+                        Cartes Cadeaux
+                    </a>
+                </li>
             </ul>
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search"><input type="search"
-                                                                                       class="form-control form-control-dark text-bg-dark"
-                                                                                       placeholder="Search..."
-                                                                                       aria-label="Search"></form>
-            <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Login</button>
-                <button type="button" class="btn btn-warning">Sign-up</button>
-            </div>
+
+            {# Logout #}
+            <a href="{{ path('app_logout') }}" class="btn btn-sm btn-link text-danger text-decoration-none">
+                Déconnexion
+            </a>
+
         </div>
     </div>
 </header>

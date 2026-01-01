@@ -9,9 +9,13 @@
 
     <link rel="shortcut icon" href="{{ asset("images/logo_admin.png") }}" type="image/x-icon">
 
+    <link rel="stylesheet" type="text/css" href="{{ asset("styles/admin.scss") }}">
+
     {% block stylesheets %}{% endblock %}
 </head>
-<body class="bg-light">
+<body class="bg-white">
+
+{% set currentRoute = app.request.attributes.get('_route') %}
 
 {% block body %}{% endblock %}
 
