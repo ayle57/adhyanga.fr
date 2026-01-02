@@ -2,47 +2,56 @@
     <div class="container">
         <div class="d-flex align-items-center justify-content-between py-2">
 
-            {# Logo #}
             <a href="{{ path('admin_dashboard') }}" class="d-flex align-items-center text-decoration-none">
-                <img src="{{ asset('images/logo_admin.png') }}" width="36" height="36" alt="">
+                <img src="{{ asset('images/logo_admin.png') }}" width="36" height="36" alt="Logo">
             </a>
 
-            {# Nav #}
-            <ul class="nav gap-2">
-                <li class="nav-item">
-                    <a href="{{ path('admin_dashboard') }}"
-                       class="nav-link px-2 {{ currentRoute == 'admin_dashboard' ? 'fw-semibold text-primary' : 'text-muted' }}">
-                        Utilisateurs
-                    </a>
-                </li>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminMenu" aria-label="Menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <ul class="nav gap-2 d-none d-lg-flex align-items-center">
                 <li class="nav-item">
-                    <a href="#"
-                       class="nav-link px-2 {{ currentRoute == 'admin_pricing' ? 'fw-semibold text-primary' : 'text-muted' }}">
-                        Rendez-vous
-                    </a>
+                    <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_users' ? 'fw-semibold text-primary' : 'text-muted' }}">Utilisateurs</a>
                 </li>
-
                 <li class="nav-item">
-                    <a href="#"
-                       class="nav-link px-2 {{ currentRoute starts with 'admin_faq' ? 'fw-semibold text-primary' : 'text-muted' }}">
-                        Offres
-                    </a>
+                    <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_appointment' ? 'fw-semibold text-primary' : 'text-muted' }}">Rendez-vous</a>
                 </li>
-
                 <li class="nav-item">
-                    <a href="#"
-                       class="nav-link px-2 {{ currentRoute == 'admin_about' ? 'fw-semibold text-primary' : 'text-muted' }}">
-                        Cartes Cadeaux
-                    </a>
+                    <a href="#" class="nav-link px-2 {{ currentRoute starts with 'admin_offers' ? 'fw-semibold text-primary' : 'text-muted' }}">Offres</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_gift_cards' ? 'fw-semibold text-primary' : 'text-muted' }}">Cartes cadeaux</a>
                 </li>
             </ul>
 
-            {# Logout #}
-            <a href="{{ path('app_logout') }}" class="btn btn-sm btn-link text-danger text-decoration-none">
-                Déconnexion
-            </a>
+            <a href="{{ path('app_logout') }}" class="btn btn-sm btn-link text-danger d-none d-lg-inline">Déconnexion</a>
 
         </div>
     </div>
 </header>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="adminMenu">
+    <div class="offcanvas-header border-bottom">
+        <h6 class="offcanvas-title fw-semibold">Administration</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="nav flex-column gap-2">
+            <li class="nav-item">
+                <a href="#" class="nav-link {{ currentRoute == 'admin_users' ? 'fw-semibold text-primary' : 'text-dark' }}">Utilisateurs</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link {{ currentRoute == 'admin_appointment' ? 'fw-semibold text-primary' : 'text-dark' }}">Rendez-vous</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link {{ currentRoute starts with 'admin_offers' ? 'fw-semibold text-primary' : 'text-dark' }}">Offres</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link {{ currentRoute == 'admin_gift_cards' ? 'fw-semibold text-primary' : 'text-dark' }}">Cartes cadeaux</a>
+            </li>
+        </ul>
+        <hr>
+        <a href="{{ path('app_logout') }}" class="btn btn-outline-danger w-100">Déconnexion</a>
+    </div>
+</div>
