@@ -12,20 +12,23 @@
 
             <ul class="nav gap-2 d-none d-lg-flex align-items-center">
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_users' ? 'fw-semibold text-primary' : 'text-muted' }}">Utilisateurs</a>
+                    <a href="{{ path('admin_customers') }}" class="nav-link px-2 {{ currentRoute == 'admin_customers' ? 'fw-semibold text-primary' : 'text-muted' }}">Clients</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_appointment' ? 'fw-semibold text-primary' : 'text-muted' }}">Rendez-vous</a>
+                    <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_appointments' ? 'fw-semibold text-primary' : 'text-muted' }}">Rendez-vous</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 {{ currentRoute starts with 'admin_offers' ? 'fw-semibold text-primary' : 'text-muted' }}">Offres</a>
+                    <a href="#" class="nav-link px-2 {{ currentRoute starts with 'admin_formulas' ? 'fw-semibold text-primary' : 'text-muted' }}">Formules</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_gift_cards' ? 'fw-semibold text-primary' : 'text-muted' }}">Cartes cadeaux</a>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_gift_cards' ? 'fw-semibold text-primary' : 'text-muted' }}">Paiements</a>
+                </li>
             </ul>
 
-            <a href="{{ path('app_logout') }}" class="btn btn-sm btn-link text-danger d-none d-lg-inline">Déconnexion</a>
+            <a href="{{ path('app_logout') }}" class="btn btn-sm bg-danger d-none d-lg-inline text-decoration text-white">Déconnexion</a>
 
         </div>
     </div>
