@@ -1,0 +1,54 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Client {{ customer.id }}{% endblock %}
+
+{% block body %}
+    {% include "admin/partials/_navbar.html.twig" %}
+
+    <style>
+        .ck-editor__editable_inline {
+            min-height: 400px;
+            border-radius: 10px;
+        }
+    </style>
+
+    <div class="container mt-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1>Notes de {{ customer.firstname }} {{ customer.lastname }}</h1>
+            <a href="{{ path('admin_customers_index') }}" class="btn btn-secondary">Retour à la liste</a>
+        </div>
+
+        <div>
+            <div class="card-body">
+                <form method="post" action="{{ path('admin_customers_update_notes', {'id': customer.id}) }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token('update_notes' ~ customer.id) }}">
+
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Notes</label>
+                        <textarea id="notes" name="notes" class="form-control" rows="8">{{ customer.notes|default('') }}</textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <a href="{{ path('admin_customers_show', {'id': customer.id}) }}" class="btn btn-secondary">Annuler</a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#notes'), {
+                toolbar: ['heading', '|', 'bold', 'italic', 'underline', 'bulletedList', 'numberedList', 'link', 'blockQuote', 'undo', 'redo'],
+                height: 300
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+{% endblock %}

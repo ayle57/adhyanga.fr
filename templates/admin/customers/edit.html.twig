@@ -1,0 +1,44 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifier {{ customer.firstname }} {{ customer.lastname }}{% endblock %}
+
+{% block body %}
+    {% include "admin/partials/_navbar.html.twig" %}
+
+    <div class="container mt-4">
+        <h1>Modifier le client #{{ customer.id }}</h1>
+
+        <form method="post" action="{{ path('admin_customers_update', {'id': customer.id}) }}">
+            {# CSRF token #}
+            <input type="hidden" name="_token" value="{{ csrf_token('update_customer_' ~ customer.id) }}">
+
+            <div class="mb-3">
+                <label for="firstname" class="form-label">Prénom</label>
+                <input type="text" id="firstname" name="firstname" class="form-control" value="{{ customer.firstname }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="lastname" class="form-label">Nom</label>
+                <input type="text" id="lastname" name="lastname" class="form-control" value="{{ customer.lastname }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" value="{{ customer.email }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label">Téléphone</label>
+                <input type="text" id="phone" name="phone" class="form-control" value="{{ customer.phone }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea id="notes" name="notes" class="form-control" rows="6">{{ customer.notes|default('') }}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <a href="{{ path('admin_customers_show', {'id': customer.id}) }}" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div>
+{% endblock %}
