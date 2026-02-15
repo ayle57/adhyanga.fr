@@ -16,6 +16,29 @@ class CustomerRepository extends ServiceEntityRepository
         parent::__construct($registry, Customer::class);
     }
 
+    public function findCustomersByLimit(int $limit): array
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.updatedAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFiltered(string $search = null)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->orderBy('c.updatedAt', 'DESC');
+
+        if ($search) {
+            $qb->andWhere('c.lastname LIKE :search OR c.firstname LIKE :search')
+                ->setParameter('search', '%' . $search . '%');
+        }
+
+        return $qb;
+    }
+
+
     //    /**
     //     * @return Customer[] Returns an array of Customer objects
     //     */
