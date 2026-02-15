@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Customer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -16,28 +17,32 @@ class CustomerRepository extends ServiceEntityRepository
         parent::__construct($registry, Customer::class);
     }
 
-    public function findCustomersByLimit(int $limit): array
-    {
-        return $this->createQueryBuilder('c')
-            ->orderBy('c.updatedAt', 'DESC')
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function findFiltered(string $search = null)
+    /**
+     * Retourne un QueryBuilder pour la liste filtrée de clients
+     *
+     * @param string|null $search Texte à rechercher (nom, prénom, email)
+     */
+    public function findFiltered(?string $search): QueryBuilder
     {
         $qb = $this->createQueryBuilder('c')
-            ->orderBy('c.updatedAt', 'DESC');
+            ->orderBy('c.lastname', 'DESC'); // ordre par défaut
 
         if ($search) {
-            $qb->andWhere('c.lastname LIKE :search OR c.firstname LIKE :search')
+            $qb->andWhere('c.firstname LIKE :search OR c.lastname LIKE :search OR c.email LIKE :search')
                 ->setParameter('search', '%' . $search . '%');
         }
 
         return $qb;
     }
 
+    public function findAllAsArray(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.id, c.firstname, c.lastname, c.email, c.createdAt')
+            ->orderBy('c.id', 'DESC')
+            ->getQuery()
+            ->getArrayResult();
+    }
 
     //    /**
     //     * @return Customer[] Returns an array of Customer objects
