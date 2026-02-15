@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
@@ -15,15 +16,18 @@ class Customer
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("customer_table")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(max: 255, maxMessage: "Veuillez entrer un prénom de moins de 255 caractères")]
+    #[Groups("customer_table")]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\Length(max: 255, maxMessage: "Veuillez entrer un nom de famille de moins de 255 caractères")]
     #[Assert\NotBlank(message: "Veuillez entrer un nom de famille")]
+    #[Groups("customer_table")]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -43,8 +47,9 @@ class Customer
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $notes = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     #[Assert\NotBlank(message: "Veuillez entrer une date de création")]
+    #[Groups("customer_table")]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
@@ -59,8 +64,12 @@ class Customer
     #[ORM\OneToMany(targetEntity: GiftCard::class, mappedBy: 'purchaser', orphanRemoval: true)]
     private Collection $giftCards;
 
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
     public function __construct()
     {
+        $this->setUpdatedAt(new \DateTimeImmutable());
         $this->setCreatedAt(new \DateTimeImmutable());
         $this->appointments = new ArrayCollection();
         $this->giftCards = new ArrayCollection();
@@ -199,6 +208,18 @@ class Customer
                 $giftCard->setPurchaser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
