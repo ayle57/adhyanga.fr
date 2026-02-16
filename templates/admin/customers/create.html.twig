@@ -1,0 +1,33 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Créer un client{% endblock %}
+
+{% block body %}
+    {% include "admin/partials/_navbar.html.twig" %}
+
+    <div class="container mt-4">
+        <h1>Nouveau client</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label>Prénom</label>
+                <input type="text" name="firstname" class="form-control" value="{{ customer.firstname }}">
+            </div>
+            <div class="mb-3">
+                <label>Nom</label>
+                <input type="text" name="lastname" class="form-control" value="{{ customer.lastname }}">
+            </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" value="{{ customer.email }}">
+            </div>
+            <div class="mb-3">
+                <label>Téléphone</label>
+                <input type="text" name="phone" class="form-control" value="{{ customer.phone }}">
+            </div>
+
+            <button class="btn btn-success">Créer</button>
+            <a href="{{ path('admin_customers_index') }}" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div>
+{% endblock %}

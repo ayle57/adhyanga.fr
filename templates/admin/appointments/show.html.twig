@@ -1,0 +1,53 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Rendez-vous #{{ appointment.id }}{% endblock %}
+
+{% block body %}
+    {% include 'admin/partials/_navbar.html.twig' %}
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Rendez-vous #{{ appointment.id }}</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Client</h5>
+                <p class="card-text">
+                    {{ appointment.customer.firstname }} {{ appointment.customer.lastname }}<br>
+                    Email: {{ appointment.customer.email }}<br>
+                    Téléphone: {{ appointment.customer.phone|default('-') }}
+                </p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Détails du rendez-vous</h5>
+                <p class="card-text">
+                    <strong>Date et heure :</strong>
+                    {{ appointment.startTime ? appointment.startTime|date('d/m/Y H:i') : '-' }}<br>
+
+                    <strong>Statut :</strong>
+                    <span class="badge
+                        {% if appointment.status.value == 'scheduled' %}bg-primary{% endif %}
+                        {% if appointment.status.value == 'done' %}bg-success{% endif %}
+                        {% if appointment.status.value == 'canceled' %}bg-danger{% endif %}">
+                        {{ appointment.status.label() }}
+                    </span><br>
+
+                    <strong>Créé le :</strong> {{ appointment.createdAt ? appointment.createdAt|date('d/m/Y H:i') : '-' }}<br>
+                    <strong>Notes :</strong> {{ appointment.notes|default('-') }}
+                </p>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <a href="{{ path('admin_appointments_index') }}" class="btn btn-outline-secondary">
+                Retour à la liste
+            </a>
+
+            <a href="{{ path('admin_customers_show', {'id': appointment.customer.id}) }}" class="btn btn-primary">
+                Voir le client
+            </a>
+        </div>
+    </div>
+{% endblock %}
