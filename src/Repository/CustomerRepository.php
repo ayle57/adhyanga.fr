@@ -28,7 +28,7 @@ class CustomerRepository extends ServiceEntityRepository
             ->orderBy('c.lastname', 'DESC'); // ordre par défaut
 
         if ($search) {
-            $qb->andWhere('c.firstname LIKE :search OR c.lastname LIKE :search OR c.email LIKE :search')
+            $qb->andWhere('LOWER(c.firstname) LIKE :search OR LOWER(c.lastname) LIKE :search OR LOWER(c.email) LIKE :search')
                 ->setParameter('search', '%' . $search . '%');
         }
 
