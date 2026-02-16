@@ -15,16 +15,16 @@
                     <a href="{{ path('admin_customers_index') }}" class="nav-link px-2 {{ 'admin_customers' in currentRoute ? 'fw-semibold text-primary' : 'text-muted' }}">Clients</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_appointments' ? 'fw-semibold text-primary' : 'text-muted' }}">Rendez-vous</a>
+                    <a href="{{ path('admin_appointments_index') }}" class="nav-link px-2 {{ 'admin_appointments' in currentRoute ? 'fw-semibold text-primary' : 'text-muted' }}">Rendez-vous</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 {{ currentRoute starts with 'admin_formulas' ? 'fw-semibold text-primary' : 'text-muted' }}">Formules</a>
+                    <a href="#" class="nav-link px-2 {{ 'admin_formulas' in currentRoute ? 'fw-semibold text-primary' : 'text-muted' }}">Formules</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_gift_cards' ? 'fw-semibold text-primary' : 'text-muted' }}">Cartes cadeaux</a>
+                    <a href="#" class="nav-link px-2 {{ 'admin_giftcard' in currentRoute ? 'fw-semibold text-primary' : 'text-muted' }}">Cartes cadeaux</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 {{ currentRoute == 'admin_gift_cards' ? 'fw-semibold text-primary' : 'text-muted' }}">Paiements</a>
+                    <a href="#" class="nav-link px-2 {{ 'admin_payments' in currentRoute ? 'fw-semibold text-primary' : 'text-muted' }}">Paiements</a>
                 </li>
             </ul>
 
