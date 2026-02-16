@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AppointmentRepository::class)]
@@ -16,10 +17,12 @@ class Appointment
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("appointment_table")]
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'appointments')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups("appointment_table")]
     private ?Customer $customer = null;
 
     #[ORM\ManyToOne(inversedBy: 'appointments')]
@@ -41,6 +44,7 @@ class Appointment
     private ?string $notes = null;
 
     #[ORM\Column(enumType: AppointmentStatusEnum::class)]
+    #[Groups("appointment_table")]
     private AppointmentStatusEnum $status;
 
     /**
@@ -51,6 +55,7 @@ class Appointment
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "Veuillez entrer une date de création")]
+    #[Groups("appointment_table")]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
