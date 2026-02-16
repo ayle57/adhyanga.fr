@@ -1,7 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Admin\Crud;
 
+use App\Entity\Customer;
 use App\Repository\CustomerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,7 +13,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route("/admin/customers/", name: "admin_customers_")]
-final class CustomersController extends AbstractController
+final class CustomerController extends AbstractController
 {
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
@@ -21,9 +22,6 @@ final class CustomersController extends AbstractController
         private readonly PaginatorInterface $paginator,
     ) {}
 
-    /**
-     * Liste des clients avec recherche et tri
-     */
     #[Route("", name: "index", methods: ["GET"])]
     public function index(Request $request): Response
     {
@@ -34,7 +32,7 @@ final class CustomersController extends AbstractController
         $pagination = $this->paginator->paginate(
             $queryBuilder,
             $request->query->getInt('page', 1),
-            20
+            18
         );
 
         $data = $this->serializer->normalize(
@@ -50,10 +48,7 @@ final class CustomersController extends AbstractController
         ]);
     }
 
-    /**
-     * Affiche un client
-     */
-    #[Route("{id}", name: "show", methods: ["GET"])]
+    #[Route("{id}", name: "show", methods: ["GET"], requirements: ["id" => "\d+"])]
     public function show(int $id): Response
     {
         $customer = $this->customerRepository->find($id);
@@ -165,5 +160,28 @@ final class CustomersController extends AbstractController
         $this->addFlash('success', sprintf('Le client #%d a été mis à jour avec succès.', $customer->getId()));
 
         return $this->redirectToRoute('admin_customers_show', ['id' => $customer->getId()]);
+    }
+
+    #[Route("create", name: "create", methods: ["GET", "POST"])]
+    public function create(Request $request): Response
+    {
+        $customer = new Customer();
+
+        if ($request->isMethod('POST')) {
+            $customer->setFirstname($request->request->get('firstname', ''));
+            $customer->setLastname($request->request->get('lastname', ''));
+            $customer->setEmail($request->request->get('email', ''));
+            $customer->setPhone($request->request->get('phone', ''));
+
+            $this->entityManager->persist($customer);
+            $this->entityManager->flush();
+
+            $this->addFlash('success', sprintf('Le client #%d a été créé.', $customer->getId()));
+            return $this->redirectToRoute('admin_customers_index');
+        }
+
+        return $this->render('admin/customers/create.html.twig', [
+            'customer' => $customer,
+        ]);
     }
 }
