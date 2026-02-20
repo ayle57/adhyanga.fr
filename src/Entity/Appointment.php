@@ -34,6 +34,7 @@ class Appointment
     #[ORM\Column]
     #[Assert\NotBlank(message: "Veuillez entrer une date et une heure de départ")]
     #[Assert\DateTime(message: "Veuillez entrer une date et une heure")]
+    #[Groups("appointment_table")]
     private ?\DateTime $startTime = null;
 
     #[ORM\Column(nullable: true)]

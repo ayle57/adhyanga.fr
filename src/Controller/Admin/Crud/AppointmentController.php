@@ -75,11 +75,9 @@ final class AppointmentController extends AbstractController
         ]);
     }
 
-    #[Route('{id}', name: 'show', methods: ['GET'])]
-    public function show(int $id): Response
+    #[Route('{id<\d+>}', name: 'show', methods: ['GET'])]
+    public function show(Appointment $appointment): Response
     {
-        $appointment = $this->appointmentRepository->find($id);
-
         if (!$appointment) {
             $this->addFlash('danger', 'Rendez-vous introuvable.');
             return $this->redirectToRoute('admin_appointments_index');
@@ -90,4 +88,46 @@ final class AppointmentController extends AbstractController
         ]);
     }
 
+    #[Route('create', name: 'create', methods: ['GET', 'POST'])]
+    public function create(Request $request): Response
+    {
+        $appointment = new Appointment();
+
+        if ($request->isMethod('POST')) {
+
+            $customerId = $request->request->get('customer_id');
+            $customer = $this->entityManager
+                ->getRepository(\App\Entity\Customer::class)
+                ->find($customerId);
+
+            if (!$customer) {
+                $this->addFlash('danger', 'Client introuvable.');
+                return $this->redirectToRoute('admin_appointments_create');
+            }
+
+            $startTime = new \DateTime($request->request->get('start_time'));
+            $endTime = new \DateTime($request->request->get('end_time'));
+
+            $appointment->setCustomer($customer);
+            $appointment->setStartTime($startTime);
+            $appointment->setEndTime($endTime);
+            $appointment->setStatus(AppointmentStatusEnum::Scheduled);
+            $appointment->setUpdatedAt(new \DateTimeImmutable());
+
+            $this->entityManager->persist($appointment);
+            $this->entityManager->flush();
+
+            $this->addFlash('success', 'Rendez-vous créé avec succès.');
+
+            return $this->redirectToRoute('admin_appointments_index');
+        }
+
+        $customers = $this->entityManager
+            ->getRepository(\App\Entity\Customer::class)
+            ->findAll();
+
+        return $this->render('admin/appointments/create.html.twig', [
+            'customers' => $customers,
+        ]);
+    }
 }

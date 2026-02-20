@@ -56,6 +56,7 @@ class Customer
      * @var Collection<int, Appointment>
      */
     #[ORM\OneToMany(targetEntity: Appointment::class, mappedBy: 'customer')]
+    #[ORM\OrderBy(["startTime" => "DESC"])]
     private Collection $appointments;
 
     /**
